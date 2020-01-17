@@ -4,3 +4,4 @@
 @import "{{ site.theme }}";
 
 #a-title{text-decoration:none;}
+header h1:before{content: "root@localhost:~ # whoami\A";white-space:pre;}
