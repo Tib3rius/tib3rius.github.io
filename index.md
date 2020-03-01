@@ -1,3 +1,6 @@
+---
+title: Home
+---
 # Courses
 
 I have two courses on Udemy. Check out my [Twitter](https://twitter.com/tibsec) for my latest coupons!
