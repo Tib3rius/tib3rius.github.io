@@ -6,4 +6,6 @@
 #a-title{text-decoration:none;}
 header h1:before{content: "root@localhost:~ # whoami\A";white-space:pre;}
 header h1{margin:0;}
-button.answer{padding:5px;margin-bottom:10px;border:1px solid #000;}
+div.answer{margin-bottom:1em;}
+button.toggle{padding:0.5em;margin-bottom:1em;border:0.1em solid #000;}
+div.hidden{display:none;}
