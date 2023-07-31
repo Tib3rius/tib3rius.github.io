@@ -71,9 +71,9 @@ It is impossible to identify business logic flaws using current scanners, since 
 ## 13. Describe 3 payloads you could use to identify a server-side template engine by causing an error message.
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
-<li>Invalid syntax: $\{\{&lt;%\[%'"\}\}%\.</li>
-<li>Divide by zero: ${1/0}</li>
-<li>Invalid variable names: ${tib3rius}</li></ol></div></div>
+<li>Invalid syntax: &#36;&#123;&#123;&lt;&#37;&#91;&#37;&#39;&quot;&#125;&#125;&#37;&#92;&#46;</li>
+<li>Divide by zero: &#36;&#123;1&#47;0&#125;</li>
+<li>Invalid variable names: &#36;&#123;tib3rius&#125;</li></ol></div></div>
 
 ## 14. What is the purpose of the Sec-WebSocket-Key header?
 
@@ -102,7 +102,7 @@ It is impossible to identify business logic flaws using current scanners, since 
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">If possible, avoid passing untrusted inputs to potentially dangerous JavaScript functions. Checks should be implemented to ensure that values only include expected characters (as opposed to trying to detect bad characters). Encoding inputs is also a possiblity.</div></div>
 
-## 20. What conditions must be met to *prevent* a browser from sending a CORS Preflight request?
+## 20. What conditions must be met to \*prevent\* a browser from sending a CORS Preflight request?
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
 <li>Only GET, HEAD, or POST methods are allowed.</li>
