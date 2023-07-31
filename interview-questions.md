@@ -21,14 +21,14 @@ The following web application security questions and answers (mostly focused on 
 ## 3. What are the differences between Base64 and Base64URL encoding?
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">In Base64URL encoding, a "-" is used instead of a "+", and a "_" instead of a "/". Padding with = is also optional, and is usually omitted. This is to provide more compatibility if the value needs to be used in a URL.<br /><br />Did you know that padding is actually not required at all for decoding, even in regular Base64? This is because we can figure out how many bytes are left to decode based on the number of remaining Base64 characters:<br /><br />
-2 characters = 1 more byte
+2 characters = 1 more byte<br />
 3 characters = 2 more bytes</div></div>
 
 ## 4. Name 5 (or more) types of Cross-Site Scripting.
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">This was quite controversial and I was generally pretty lenient on what constituted a "type". The 5 I had in mind while writing the question were: Reflected, Stored, DOM-based, CSTI, and Server-Side.<br /><br />Other types suggested by people were: Self, XST, Universal, Blind, Mutation</div></div>
 
-## 5. How does Boolean *Error* Inferential (Blind) SQL Injection work?
+## 5. How does Boolean \*Error\* Inferential (Blind) SQL Injection work?
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">This one confused a lot of people. Boolean Inferential (or Blind) and Error-based SQL Injection are two different things, but neither were what I asked about. I very specifically wanted the Error variant of Boolean Inferential injection.<br /><br />
 This is a variant where injecting "AND 1=1" and "AND 1=2" (for example) will return the same response! The trick is to purposefully cause a database error when a condition we want to test is true, and hope that error propagates back to the response somehow (e.g. a 500 Internal Server error).<br /><br />
@@ -47,7 +47,7 @@ There are countless ways to manipulate the Transfer-Encoding header. Common ones
 ## 8. What is DOM Clobbering and how can it be used to bypass (some) HTML sanitizers, resulting in XSS?
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">DOM Clobbering is a way to manipulate the DOM using only HTML elements (i.e. no JavaScript). By using the id or name attribute of some elements, it is possible to create global variables in the DOM. This can lead to XSS in some cases.<br /><br />
-I created a dynamic cheatsheet where you can see how DOM Clobbering works: [DOM Clobbering Cheatsheet](https://tib3rius.com/dom/) (works best in Chrome)!</div></div>
+I created a dynamic cheatsheet where you can see how DOM Clobbering works: <a href="https://tib3rius.com/dom/">DOM Clobbering Cheatsheet</a> (works best in Chrome)</div></div>
 
 ## 9. Describe how HTTP Parameter Pollution could be used to bypass a Web Application Firewall.
 
@@ -60,7 +60,8 @@ Generally, the user should be able to access the functionality, but not all reso
 
 ## 11. What are JWKs and JKUs and how does their usage differ in JWTs?
 
-<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">A JSON Web Key (JWK) is a JSON object representing a signing key in a JWT. A JSON Web Key Set URL (JKU) is a URL which points to the location of a set of JWKs. In a JWT, both JWKs and JKUs go in the header. When using a JWK, the entire public key is embedded within the header, whereas a JKU can point to a set of multiple public keys. In both cases a key ID (kid) is used to select the key to be used.</div></div>
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">A JSON Web Key (JWK) is a JSON object representing a signing key in a JWT. A JSON Web Key Set URL (JKU) is a URL which points to the location of a set of JWKs. In a JWT, both JWKs and JKUs go in the header.<br /><br />
+When using a JWK, the entire public key is embedded within the header, whereas a JKU can point to a set of multiple public keys. In both cases a key ID (kid) is used to select the key to be used.</div></div>
 
 ## 12. In the context of web apps, what is Business Logic and how does testing for Business Logic vulnerabilities differ compared to (for example) XSS, SQLi, etc?
 
@@ -70,7 +71,7 @@ It is impossible to identify business logic flaws using current scanners, since 
 ## 13. Describe 3 payloads you could use to identify a server-side template engine by causing an error message.
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
-<li>Invalid syntax: ${{<%[%'"}}%\.</li>
+<li>Invalid syntax: $\{\{&lt;%\[%'"\}\}%\.</li>
 <li>Divide by zero: ${1/0}</li>
 <li>Invalid variable names: ${tib3rius}</li></ol></div></div>
 
