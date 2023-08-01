@@ -106,7 +106,7 @@ It is impossible to identify business logic flaws using current scanners, since 
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
 <li>Only GET, HEAD, or POST methods are allowed.</li>
-<li>Only the following headers can be manually set: Accept, Accept-Languagr, Content-Language, Content-Type, Range.</li>
+<li>Only the following headers can be manually set: Accept, Accept-Language, Content-Language, Content-Type, Range.</li>
 <li>If Content-Type is set, it must use one of the following: application/x-www-form-urlencoded, multipart/form-data, text/plain.</li>
 <li>If XMLHttpRequest was used, no event listener must be registered on the XMLHttpRequest.upload property.</li>
 <li>No ReadableStream object was used.</li></ol></div></div>
@@ -124,5 +124,13 @@ It is impossible to identify business logic flaws using current scanners, since 
 <li>Only allowing files with certain extensions and mime-types to be uploaded.</li>
 <li>Performing file analysis (to confirm the file type) and AV scans.</li>
 <li>Performing path canonicalization before checking the end location of the file matches an allowed directory.</li></ol></div></div>
+
+## 23. How does Mass Assignment work and what are some potential outcomes of exploiting such a vulnerability?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Mass Assignment occurs when functionality allowing users to create or update "objects" does not restrict which attributes a user can specify. This is more common in modern MVC-type frameworks.<br /><br />This can lead to attackers being able to "upgrade" their role (e.g. to admin), add money to an account balance, assign potentially negative resources to other users, or perform a log forging attack by modifying date values, as well as countless other attacks.</div></div>
+
+## 24. What is GraphQL batching and how can it be used to bypass rate limiting?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">GraphQL batching allows a user to send multiple queries or mutations to a GraphQL endpoint in a single request, either using arrays or aliases. Each query / mutation is then executed and a collection of results is returned in the response.<br /><br />This can bypass rate limiting since instead of sending 1000 requests to the endpoint (for example), one request can be sent containing 1000 queries / mutations.</div></div>
 
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
