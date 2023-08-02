@@ -133,4 +133,8 @@ It is impossible to identify business logic flaws using current scanners, since 
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">GraphQL batching allows a user to send multiple queries or mutations to a GraphQL endpoint in a single request, either using arrays or aliases. Each query / mutation is then executed and a collection of results is returned in the response.<br /><br />This can bypass rate limiting since instead of sending 1000 requests to the endpoint (for example), one request can be sent containing 1000 queries / mutations.</div></div>
 
+## 25. What is type juggling, and why does the JSON format help exploit these vulnerabilities?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Type juggling is a feature of certain programming languages where variables will be converted to a different type (e.g. string, integer, boolean) in certain operations, rather than throwing an exception. For example, when concatenating a string with an integer, the integer will be converted to a string.<br /><br />This can however lead to vulnerabilities when preserving the type is important. The JSON format helps exploit these vulnerabilities as it supports a wide range of data types natively (numbers, strings, booleans, arrays, objects, and nulls), whereas regular URL/Body parameters often only support strings and arrays.</div></div>
+
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>

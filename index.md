@@ -1,6 +1,10 @@
 ---
 title: Home
 ---
+# Web AppSec Interview Questions
+
+Practice your web application security interview skills with these challenging questions (answers provided but hidden by default): [Web AppSec Interview Questions](https://tib3rius.com/interview-questions)
+
 # Courses
 
 I have two Privilege Escalation courses, one for Linux, one for Windows, as well as a bundle deal that includes both.
