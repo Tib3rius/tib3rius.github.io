@@ -137,4 +137,15 @@ It is impossible to identify business logic flaws using current scanners, since 
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Type juggling is a feature of certain programming languages where variables will be converted to a different type (e.g. string, integer, boolean) in certain operations, rather than throwing an exception. For example, when concatenating a string with an integer, the integer will be converted to a string.<br /><br />This can however lead to vulnerabilities when preserving the type is important. The JSON format helps exploit these vulnerabilities as it supports a wide range of data types natively (numbers, strings, booleans, arrays, objects, and nulls), whereas regular URL/Body parameters often only support strings and arrays.</div></div>
 
+## 26. Describe 3 techniques you might use to find sensitive data being exposed by an application.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">There are of course far more than 3 techniques, and any of the following would count:<ol>
+<li>Source code analysis.</li>
+<li>Directory busting.</li>
+<li>Causing errors / exceptions / stack traces by fuzzing.</li>
+<li>Access control exploitation.</li>
+<li>Google dorking.</li>
+<li>Git repo history analysis.</li>
+<li>Exploiting SQL injections.</li></ol></div></div>
+
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
