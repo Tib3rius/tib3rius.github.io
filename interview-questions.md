@@ -148,4 +148,12 @@ It is impossible to identify business logic flaws using current scanners, since 
 <li>Git repo history analysis.</li>
 <li>Exploiting SQL injections.</li></ol></div></div>
 
+## 27. Describe the attributes of a request which make it effectively immune to CSRF (i.e. CSRF mitigation is not required).
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Again there are a few possible answers here:<ol>
+<li>If authentication uses an Authorization header and a non-trivial token (i.e. not Basic Auth), such as a JWT, or any kind of custom header with an unpredictable value.</li>
+<li>If the server doesn't support CORS or has a locked down policy, and a non-standard HTTP method is used (e.g. PUT, DELETE), or the request body uses JSON/XML.</li>
+<li>If the request relies on a "secret" value which effectively becomes an anti-CSRF token. For example, login requests are immune to CSRF because if the attacker knows the victim's credentials, they don't even need to perform a CSRF attack*.</li></ol>
+*There are some rare edge cases where performing a CSRF attack against a login, despite knowing the victim's credentials, would be useful.</div></div>
+
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
