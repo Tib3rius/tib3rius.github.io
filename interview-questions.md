@@ -156,7 +156,7 @@ It is impossible to identify business logic flaws using current scanners, since 
 <li>If the request relies on a "secret" value which effectively becomes an anti-CSRF token. For example, login requests are immune to CSRF because if the attacker knows the victim's credentials, they don't even need to perform a CSRF attack*.</li></ol>
 *There are some rare edge cases where performing a CSRF attack against a login, despite knowing the victim's credentials, would be useful.</div></div>
 
-## 28. What are 3 negative outcomes (i.e. bad for the tester) that could arise if "OR <true>" (or similar) is relied on for SQL injection testing? 👀
+## 28. What are 3 negative outcomes (i.e. bad for the tester) that could arise if "OR &lt;true&gt;" (or similar) is relied on for SQL injection testing? 👀
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><a href="https://twitter.com/0xTib3rius/status/1616493354006495232">I've ranted about this before.</a><ol>
 <li>OR &lt;true&gt; can return all rows of a table, which could cause server issues if the table is large.</li>
