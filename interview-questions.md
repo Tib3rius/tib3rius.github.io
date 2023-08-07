@@ -163,4 +163,21 @@ It is impossible to identify business logic flaws using current scanners, since 
 <li>OR &lt;true&gt; can lead to false positives when testing for login bypasses, if the login expects only one row be returned for a valid login attempt.</li>
 <li>OR &lt;true&gt; injected into an UPDATE or DELETE statement can be disastrous.</li></ol></div></div>
 
+# 29. Name 5 vulnerabilities which could potentially lead to OS command execution on a web app.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">There are quite a few ways, though several are rare or require highly specific setups to work:<ol>
+<li>OS Command Injection</li>
+<li>Insecure Deserialization</li>
+<li>Server-Side Template Injection</li>
+<li>File Upload Vulnerabilities</li>
+<li>File Inclusion Vulnerabilities</li>
+<li>Server-Side Prototype Pollution</li>
+<li>Code Injection</li>
+<li>SQL Injection</li>
+<li>XXE</li></ol></div></div>
+
+## 30. What is prototype pollution, and what exploits could it lead to with both client / server-side variants?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Prototype Pollution is a JavaScript / NodeJS vulnerability that allows attackers to add properties to global object prototypes, which are then passed down to actual objects used in the application.<br /><br />In client-side JS this can lead to DOM XSS. With server-side JS (e.g. NodeJS), it can lead to access control bypasses as well as potential RCEs.</div></div>
+
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
