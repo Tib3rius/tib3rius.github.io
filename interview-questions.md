@@ -4,7 +4,7 @@ title: "Web AppSec Interview Questions"
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 # Web AppSec Interview Questions
 
-The following web application security questions and answers (mostly focused on web app hacking) are part of a series from my social media. The answers are hidden by default so you can practice answering them yourself in preparation for an interview. Note that the answers aren't necessarily complete, they are just how I would answer the question.
+The following web application security questions and answers (mostly focused on web app hacking) are part of a series from my social media. Most are supposed to be difficult, so don't worry if you have trouble answering them! The answers are hidden by default so you can practice answering them yourself in preparation for an interview. Note that the answers aren't necessarily complete, they are just how I would answer the question.
 
 ## 1. What is the difference between Web Cache Deception and Web Cache Poisoning?
 
