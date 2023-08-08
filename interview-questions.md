@@ -163,7 +163,7 @@ It is impossible to identify business logic flaws using current scanners, since 
 <li>OR &lt;true&gt; can lead to false positives when testing for login bypasses, if the login expects only one row be returned for a valid login attempt.</li>
 <li>OR &lt;true&gt; injected into an UPDATE or DELETE statement can be disastrous.</li></ol></div></div>
 
-# 29. Name 5 vulnerabilities which could potentially lead to OS command execution on a web app.
+## 29. Name 5 vulnerabilities which could potentially lead to OS command execution on a web app.
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">There are quite a few ways, though several are rare or require highly specific setups to work:<ol>
 <li>OS Command Injection</li>
