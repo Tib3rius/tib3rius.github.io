@@ -180,4 +180,25 @@ It is impossible to identify business logic flaws using current scanners, since 
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Prototype Pollution is a JavaScript / NodeJS vulnerability that allows attackers to add properties to global object prototypes, which are then passed down to actual objects used in the application.<br /><br />In client-side JS this can lead to DOM XSS. With server-side JS (e.g. NodeJS), it can lead to access control bypasses as well as potential RCEs.</div></div>
 
+## 31. Describe how you would test for Vertical Access Control vulnerabilities on an application with 20 roles and 300+ different "functional" requests.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">While a manual effort is possible, the best way to do this is via some form of guided automation. In Burp Suite, the Auth Analyzer extension can be used to track multiple sessions (one for each role) and replay each request with updated session tokens, comparing the response to the original.<br /><br />For the brave, the AuthMatrix extension allows for more complex automation, and can handle logging users in, tracking anti-CSRF tokens, etc. Access rules can be configured per request/role pair, and the entire setup can be saved and replayed at a later date to validate fixes.</div></div>
+
+## 32. Under what circumstances is a tab's Session Storage instance preserved?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">A tab's Session Storage instance is preserved if the page is reloaded, or if the user browses to another origin in the tab and later returns. If the user closes the tab, the instance is still preserved, provided the browser has the ability to reopen tabs.<br /><br />In some browsers, Session Storage for tabs is preserved if the browser instance crashes rather than exiting cleanly, allowing users to resume their browsing session.</div></div>
+
+## 33. Other than uploading XML via a form, how else might one find and exploit XXE?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Many file formats use XML as a base and may trigger XXE if parsed insecurely. Examples include SVG, Microsoft documents (e.g. docx, xlsx), and other markup languages like KML.<br /><br />In addition, SOAP services use XML-formatted requests. In some cases, APIs which default to JSON-formatted inputs will also accept the same inputs as XML.</div></div>
+
+## 34. Name some common password reset flow vulnerabilities.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Basing the password reset on a user identifier (e.g. username) rather than a secret token.</li>
+<li>Using host header injection to modify password reset links in emails in order to steal the token.</li>
+<li>Easily guessable password reset tokens (bonus if they don't expire quickly / once used).</li>
+<li>Using security questions instead of a secret token to authenticate the user.</li>
+<li>Username enumeration based on password reset success messages.</li></ol></div></div>
+
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
