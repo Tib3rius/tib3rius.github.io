@@ -201,4 +201,48 @@ It is impossible to identify business logic flaws using current scanners, since 
 <li>Using security questions instead of a secret token to authenticate the user.</li>
 <li>Username enumeration based on password reset success messages.</li></ol></div></div>
 
+## 35. What is the difference between encoding, encryption, and hashing?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Encoding is the process of transferring data from one format to another while preserving the integrity of the data. If the encoding algorithm is known, anyone can decode the original data.<br /><br />Encryption is the process of scrambling data so that it can only be read by someone with the correct decryption key. Even if the encoding algorithm is known, unauthorized users will not be able to decrypt the data.<br /><br />Hashing is the process of converting data into a number (aka hash) of fixed size (e.g. 256 bits), such that the same data results in the same number. This can be used to verify a user knows the initial data without needing to know the data itself (e.g. a password for a login). The process is irreversible, and in good hashing algorithms, it should be difficult to find two sets of data which result in the same hash.</div></div>
+
+## 36. Name some ways an attacker might exploit an HTTP Request Smuggling vulnerability.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Forcing a victim to trigger an XSS payload, including "unexploitable" payloads such as those contained within a UserAgent header.</li>
+<li>Using some form of "save" functionality in the application to capture a victim's request, extracting their session token and hijacking their account.</li>
+<li>Bypassing front-end access controls by smuggling a request to a disallowed area onto one of our own requests.</li></ol></div></div>
+
+## 37. What is Server-Side Request Forgery and how can it be detected & exploited?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Server-Side Request Forgery (SSRF) occurs when an attacker can cause a server at the back-end of the application to make a "request" to a target it would not normally request from.<br /><br />It can be detected by looking for parameters which contain references to URLs, hostnames, or file paths, and attempting to manipulate these parameters to see if a request is made to a server we control, or to some backend service we can detect.<br /><br />SSRF can often be exploited to retrieve files from within the environment, perform basic port scanning, leak information from request headers, execute code, and even deliver XSS payloads.</div></div>
+
+## 38. Name some ways TLS / SSL can be misconfigured.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Outdated Protocols (e.g. SSLv3, TLSv1.0)</li>
+<li>Insecure Private Key Sizes</li>
+<li>Incomplete Certificate Chains</li>
+<li>Expired / Revoked Certificates</li>
+<li>Insecure Cipher Suites</li>
+<li>Lack of Forward Secrecy</li>
+<li>Insecure Key Exchange Algorithms</li>
+<li>Insecure Client-Initiated Renegotiation</li></ol></div></div>
+
+## 39. Give some reasons why sending sensitive data in a URL query parameter is insecure.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>URLs are generally logged, by both the server and potentially proxy services in-between the user and application.</li>
+<li>URLs are also saved to browser history, which may be preserved on shared public computers.</li>
+<li>The data may be visible in screenshots and screen shares.</li>
+<li>Users may think it is safe to copy URLs and share them.</li>
+<li>If 3rd party resources are loaded by the client-side application, the data may get sent as part of the Referer header to the 3rd party.</li></ol></div></div>
+
+## 40. In what ways could an open redirect be exploited?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>A victim could be redirected to a malicious copy of the site and not notice, since the original URL was for the legitimate site.</li>
+<li>If chained with an SSRF, it could be used to bypass URL validation and reach otherwise prohibited targets.</li>
+<li>If chained with a misconfigured OAuth setup, it could be used to steal access tokens.</li>
+<li>If the redirect uses the Location response header, we may be able to perform CRLF injection.</li></ol></div></div>
+
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
