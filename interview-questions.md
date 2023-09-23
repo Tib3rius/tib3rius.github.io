@@ -245,4 +245,44 @@ It is impossible to identify business logic flaws using current scanners, since 
 <li>If chained with a misconfigured OAuth setup, it could be used to steal access tokens.</li>
 <li>If the redirect uses the Location response header, we may be able to perform CRLF injection.</li></ol></div></div>
 
+## 41. Describe two output encoding techniques and the context in which they should be used to mitigate Cross-site Scripting.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Encoding for HTML contexts involves converting the following characters into HTML entities: &mp; &lt; &gt; " '</li>
+<li>Encoding for HTML attribute contexts is the same, provided all attribute values are quoted correctly. If not, all non-alphanumeric characters should be converted to HTML entities.</li>
+<li>Encoding for JavaScript contexts involves converting all non-alphanumeric characters into the Unicode encoding format (e.g. \u0022).</li></ol></div></div>
+
+## 42. Describe three "403 Forbidden" bypass techniques.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Using different HTTP methods (e.g. POST instead of GET), or using "method override" headers / URL parameters (e.g. X-HTTP-Method) if a back-end server supports them.</li>
+<li>Using "Client Origin" HTTP headers (e.g. X-Forwarded-For) to forge our source IP address, bypassing IP-based blocklists.</li>
+<li>Manipulating the URL path using directory traversal, case modification, adding characters, or double-URL encoding.</li></ol></div></div>
+
+## 43. Describe some potential CAPTCHA weaknesses.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Replay attacks - using a previously confirmed correct answer.</li>
+<li>Improper input validation - removing or blanking CAPTCHA-related parameters.</li>
+<li>Leaked answers - the correct answer appears somewhere in the source code (I once found a CAPTCHA which worked by using CSS to distort text).</li>
+<li>Low entropy - if the set of possible answers is too small, a brute-force attack may work.</li>
+<li>Machine learning susceptible - with enough training data, a computer can solve the CAPTCHA.</li></ol></div></div>
+
+## 44. You find XSS in an application, however the customer informs you that users should be able to submit HTML code. What advice would you give them to remain secure?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">The easiest solution is likely to use an HTML sanitizer like DOMPurify with an allowlist of "safe" elements and attributes.<br /><br />Another option is to use a separate "sandbox" domain to host the HTML code, displaying it using an iframe. Any JavaScript code will run in the security context of the sandbox and will not be able to affect the main application.<br /><br />As an additional measure, a well-configured Content Security Policy can be used to instruct the browser to only run trusted JavaScript code.</div></div>
+
+## 45. What are some questions you would ask a customer during a web app pentest scoping call?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Many questions would depend on a demo of the application, however here are a few general ones:<ol>
+<li>How much functionality does the app contain (e.g. no. of "pages")?</li>
+<li>How complex is the functionality (e.g. any learning curves, lengthy processes, etc.)?</li>
+<li>How many different roles are there / should be tested?</li>
+<li>Which environment is being tested (e.g. dev, staging, prod)?</li>
+<li>Do our accounts have access to test/dummy data?</li>
+<li>Are there any access restrictions (e.g. VPN, IP block)?</li>
+<li>Are there any custom protocols being used (e.g. proprietary encoding/encryption)?</li>
+<li>Is there any rate limiting, WAF/IPS in place?</li>
+<li>Are there any out of scope areas, or vulnerabilities which should not be tested (e.g. Denial of Service)?</li></ol></div></div>
+
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
