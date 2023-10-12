@@ -285,4 +285,38 @@ It is impossible to identify business logic flaws using current scanners, since 
 <li>Is there any rate limiting, WAF/IPS in place?</li>
 <li>Are there any out of scope areas, or vulnerabilities which should not be tested (e.g. Denial of Service)?</li></ol></div></div>
 
+## 46. How would you recommend a customer fix an Insecure Deserialization vulnerability?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>If possible, don't pass serialized data via user inputs at all.</li>
+<li>Use "safe" serialization methods (e.g. JSON, Protobuf).</li>
+<li>Digitally sign any serialized data, and verify the signature prior to deserializing it.</li>
+<li>If applicable, perform type checks against deserialized data prior to using it.</li></ol></div></div>
+
+## 47. Name some user account enumeration techniques.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Error/success messages on login / registration / forgot password pages.</li>
+<li>Insecure Direct Object References.</li>
+<li>Timing Attacks (e.g. login).</li>
+<li>Excessive data exposure on APIs (e.g. /v1/users).</li></ol></div></div>
+
+## 48. Name some techniques to detect blind/inferential command injection vulnerabilities.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Trying commands with noticeable time delays, like sleep on *nix, or ping on *nix/Windows.</li>
+<li>Attempting to redirect the command output into a file in the webroot (if we know / can guess the directory).</li>
+<li>Trying commands which perform some detectable network interaction, like a DNS lookup (dig, host, nslookup) or HTTP request (curl, wget).</li></ol></div></div>
+
+## 49. What are some types of race condition vulnerabilities in web applications?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Limit overrun - performing more actions than allowed (e.g. redeeming gift cards, transferring money).</li>
+<li>State changes - bypassing a state change within normal application flow (e.g. a MFA step during login).</li>
+<li>Resource access - accessing a shared resource prior to / during the processing of the resource (e.g. uploading and accessing a malicious file prior to AV detection).</li></ol></div></div>
+
+## 50. How does NoSQL Injection differ from SQL Injection?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Other than the obvious (NoSQL injection affects NoSQL databases, not SQL databases), NoSQL injection is often highly dependent on the database variant and application programming language. Unlike SQL, there is no single standardized query language.<br /><br />NoSQL is also vulnerable to operator injection, which unlike regular syntax injection, can change the original nature of conditional checks in the query.<br /><br />Some NoSQL databases support the execution of arbitrary JavaScript code.</div></div>
+
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
