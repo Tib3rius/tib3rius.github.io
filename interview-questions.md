@@ -319,4 +319,37 @@ It is impossible to identify business logic flaws using current scanners, since 
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Other than the obvious (NoSQL injection affects NoSQL databases, not SQL databases), NoSQL injection is often highly dependent on the database variant and application programming language. Unlike SQL, there is no single standardized query language.<br /><br />NoSQL is also vulnerable to operator injection, which unlike regular syntax injection, can change the original nature of conditional checks in the query.<br /><br />Some NoSQL databases support the execution of arbitrary JavaScript code.</div></div>
 
+## 51. Describe the syntax of an HTTP request.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">You can go into a lot of detail here, but here's a basic answer that hits all the key points:<br /><br />An HTTP request starts with a request line, which includes 3 parts separated by a single space: the request method / verb (e.g. GET), the request URI, and the HTTP version. The request line is terminated by a CRLF linebreak. After this, there are a series of headers which are optional apart from the Host header (in v1.1 and above). Each header is comprised of a name, colon, value, and finally a CRLF linebreak. After the final header, there is an empty line (i.e. a CRLF), and an optional body. If a body is included, its format and length is determined by information provided in the headers.</div></div>
+
+## 52. Name some potential attacks against JWTs.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Lack of signature verification.</li>
+<li>"none" algorithm support.</li>
+<li>Accepting embedded / remote signing keys.</li>
+<li>Brute-forcing weak keys.</li>
+<li>Algorithm confusion.</li></ol></div></div>
+
+## 53. Describe the process of finding and exploiting a web cache poisoning issue.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Identify unkeyed inputs (usually header / cookie values) using a tool like Param Miner.</li>
+<li>Test identified inputs for client-side vulnerabilities (e.g. XSS, Open Redirect).</li>
+<li>Send the payload to the server multiple times until it is cached by the web cache.</li>
+<li>Verify the exploit by sending the request without the unkeyed input to see if the payload gets returned.</li></ol></div></div>
+
+## 54. Describe the process of finding and exploiting a Server-Side Template Injection.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Identify inputs which may end up in templates (either reflected or stored values).</li>
+<li>Use a polyglot payload like ${{&lt;%&#x5B;%'"}}&#x25;&#x5C; to try and generate template errors.</li>
+<li>Use several different arithmetic payloads (e.g. ${7*7}, {{7*7}}, &lt;%=7*7%&gt;) to try and detect / verify the version of the templating engine.</li>
+<li>Check for known exploits of the templating engine for reading/writing files or performing OS command execution.</li></ol></div></div>
+
+## 55. What is formula injection and how might it be exploited?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Formula injection, also known as "CSV Injection" occurs when an attacker can insert Excel-like formula (e.g. =1+1) into an application's CSV export functionality. Since most CSV files are opened in an Excel-like program, the formula will execute instead of displaying the raw data.<br /><br />This can be exploited by including a malicious formula which executes OS commands, for example the following which opens notepad.exe:<br /><br /><pre>=cmd|'/C notepad'!A1</pre><br /><br />Other exploits can include data exfiltration via clickable links or DNS lookups.<br /><br />Formula injection is a relatively controversial vulnerability, since the actual exploitation takes place entirely on the victim's computer, and not within their browser (like XSS). In addition, multiple warning popups generally appear when a user opens a document containing executable payloads, and the user must "willingly" enable their functionality.</div></div>
+
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
