@@ -344,7 +344,7 @@ It is impossible to identify business logic flaws using current scanners, since 
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
 <li>Identify inputs which may end up in templates (either reflected or stored values).</li>
-<li>Use a polyglot payload like ${{&lt;%&#x5B;%'"}}&#x25;&#x5C; to try and generate template errors.</li>
+<li>Use a polyglot payload like $&#x7B;&#x7B;&lt;%&#x5B;%'"&#x7D;&#x7D;&#x25;&#x5C; to try and generate template errors.</li>
 <li>Use several different arithmetic payloads (e.g. ${7*7}, {{7*7}}, &lt;%=7*7%&gt;) to try and detect / verify the version of the templating engine.</li>
 <li>Check for known exploits of the templating engine for reading/writing files or performing OS command execution.</li></ol></div></div>
 
