@@ -352,4 +352,47 @@ It is impossible to identify business logic flaws using current scanners, since 
 
 <div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Formula injection, also known as "CSV Injection" occurs when an attacker can insert Excel-like formula (e.g. =1+1) into an application's CSV export functionality. Since most CSV files are opened in an Excel-like program, the formula will execute instead of displaying the raw data.<br /><br />This can be exploited by including a malicious formula which executes OS commands, for example the following which opens notepad.exe:<pre>=cmd|'/C notepad'!A1</pre>Other exploits can include data exfiltration via clickable links or DNS lookups.<br /><br />Formula injection is a relatively controversial vulnerability, since the actual exploitation takes place entirely on the victim's computer, and not within their browser (like XSS). In addition, multiple warning popups generally appear when a user opens a document containing executable payloads, and the user must "willingly" enable their functionality.<br /><br />However, several instances of server-side formula injection exist, where these limitations may not apply. This includes both cloud-hosted spreadsheets (e.g. Google Sheets) and backend processes which use Excel to process documents.</div></div>
 
+## 56. What are some common OAuth 2.0 flaws & misconfigurations?
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Insecure implementation of the implicit grant type.</li>
+<li>Cross-Site Request Forgery (insecure state parameter).</li>
+<li>Session hijacking via redirection (e.g. redirect_uri).</li>
+<li>Improper scope validation.</li></ol></div></div>
+
+## 57. Describe the CL.0 variant of HTTP Request Smuggling and how it differs from standard variants (e.g. CL.TE).
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">CL.0 request smuggling occurs when a back-end server will ignore the Content-Length header in certain instances, while the front-end server uses it. This allows a second request to be smuggled in the first's body.<br /><br />This differs from standard variants since the Transfer-Encoding header is never used, hence the name CL.0 instead of CL.TE.</div></div>
+
+## 58. Name some potential ways to exploit HTML Injection.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">Assuming we discount traditional XSS, which is often treated as a separate vulnerability, there are several:<ol>
+<li>Social engineering via injected links / redirects.</li>
+<li>Denial of service via broken layouts.</li>
+<li>SSRF / LFI via PDF generation.</li>
+<li>Potentially stealing passwords (https://portswigger.net/research/stealing-passwords-from-infosec-mastodon-without-bypassing-csp).</li>
+<li>Exfiltrating potentially sensitive data via dangling markup.</li>
+<li>XSS via DOM Clobbering.</li></ol></div></div>
+
+## 59. Describe some methods for bypassing SSRF detection filters.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Use different IP address representations (e.g. decimal, hex).</li>
+<li>Use DNS to resolve a domain to a target IP address.</li>
+<li>Abuse open redirects and (double) URL encoding.</li>
+<li>Abuse lax URL validation / parser confusion (e.g. using valid-host@attacker-host or attacker-host#valid-host, etc.)</li></ol></div></div>
+
+## 60. Describe different ways a PHP include() could be exploited to gain code execution. 
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden"><ol>
+<li>Writing PHP code to a local file and including it via absolute paths, directory traversal, or the file:// scheme.</li>
+<li>Hosting PHP code remotely and including it using http://, ftp://, etc. schemes.</li>
+<li>Using php://input to read and execute raw PHP code from a POST request body.</li>
+<li>Using PHP filter (php://filter) chains can be used to create executable PHP code.</li>
+<li>Using the data:// scheme to pass raw PHP code as plain text, or as a Base64 encoded string.</li></ol></div></div>
+
+## 61. Explain how CRLF Injection works and describe possible ways it could be exploited.
+
+<div class="answer"><button class="toggle">Show/Hide Answer</button><div class="hidden">CRLF (Carriage Return, Line Feed) injection occurs when it is possible to inject those characters (\r\n) into a response header, allowing the attacker to create new lines.<br /><br />CRLF Injection can be used to create Set-Cookie headers, causing cookies to be created in the victim's browser. This is one criterion for a Session Fixation attack.<br /><br />If the attacker can inject multiple \r\n and affect the response body, they may be able to perform XSS, redirect the user off-site, or attempt a social engineering attack.</div></div>
+
 <script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
