@@ -388,7 +388,7 @@ It is impossible to identify business logic flaws using current scanners, since 
 <li>Writing PHP code to a local file and including it via absolute paths, directory traversal, or the file:// scheme.</li>
 <li>Hosting PHP code remotely and including it using http://, ftp://, etc. schemes.</li>
 <li>Using php://input to read and execute raw PHP code from a POST request body.</li>
-<li>Using PHP filter (php://filter) chains can be used to create executable PHP code.</li>
+<li>Using PHP filter (php://filter) chains to create executable PHP code.</li>
 <li>Using the data:// scheme to pass raw PHP code as plain text, or as a Base64 encoded string.</li></ol></div></div>
 
 ## 61. Explain how CRLF Injection works and describe possible ways it could be exploited.
