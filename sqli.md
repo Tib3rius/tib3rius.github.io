@@ -14,7 +14,7 @@ title: "SQL Injection Cheatsheet"
 </thead>
 <tbody>
 <tr>
-<td rowspan="3" style="vertical-align:top">MySQL</td>
+<td rowspan="3" class="span">MySQL</td>
 <td># comment</td>
 </tr>
 <tr>
@@ -24,28 +24,28 @@ title: "SQL Injection Cheatsheet"
 <td>/*comment*/</td>
 </tr>
 <tr>
-<td rowspan="2" style="vertical-align:top">PostgreSQL</td>
+<td rowspan="2" class="span">PostgreSQL</td>
 <td>-- comment</td>
 </tr>
 <tr>
 <td>/*comment*/</td>
 </tr>
 <tr>
-<td rowspan="2" style="vertical-align:top">MSSQL</td>
+<td rowspan="2" class="span">MSSQL</td>
 <td>-- comment</td>
 </tr>
 <tr>
 <td>/*comment*/</td>
 </tr>
 <tr>
-<td rowspan="2" style="vertical-align:top">Oracle</td>
+<td rowspan="2" class="span">Oracle</td>
 <td>-- comment</td>
 </tr>
 <tr>
 <td>/*comment*/</td>
 </tr>
 <tr>
-<td rowspan="2" style="vertical-align:top">SQLite</td>
+<td rowspan="2" class="span">SQLite</td>
 <td>-- comment</td>
 </tr>
 <tr>

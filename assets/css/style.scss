@@ -9,5 +9,7 @@ header h1{margin:0;}
 div.answer{margin-bottom:1em;}
 button.toggle{padding:0.5em;margin-bottom:1em;border:0.1em solid #000;}
 div.hidden{display:none;}
+thead > tr {background-color: #3c3c3c69;}
 tr:nth-child(even) {background-color: #3c3c3c69;}
 tr:nth-child(odd) {background-color: #55555569;}
+td.span {background-color: #55555569;vertical-align:top;}
