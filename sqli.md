@@ -48,13 +48,13 @@ In some cases, none of our "repairs" work because we are injecting into an integ
 </thead>
 <tbody>
 <tr>
-<td> -- -</td>
+<td>&nbsp;-- -</td>
 </tr>
 <tr>
-<td> AND 1=1</td>
+<td>&nbsp;AND 1=1</td>
 </tr>
 <tr>
-<td> AND 1=1 -- -</td>
+<td>&nbsp;AND 1=1 -- -</td>
 </tr>
 </tbody>
 </table>
