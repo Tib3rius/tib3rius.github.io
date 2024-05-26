@@ -5,6 +5,18 @@ title: "SQL Injection Cheatsheet"
 
 This is an SQL injection cheatsheet with tried and true payloads / techniques that cover the 5 most popular database variants and their derivatives (MySQL, PostgreSQL, MSSQL/SQL Server, Oracle, SQLite).
 
+## Pronunciation Guide
+
+How to pronounce "SQL" correctly. &#x1F60F;
+
+ESS CUE ELL <span style="color:#008000">&#x2714;</span>
+
+SEE KWUHL <span style="color:#FF0000">&#x2718;</span>
+
+SQUEAL <span style="color:#FFBF00">&#xAF;&#x5C;&#x5F;&#x28;&#x30C4;&#x29;&#x5F;&#x2F;&#xAF;</span>
+
+SQUIRREL &#x1F43F;&#xFE0F;
+
 ## Break & Repair Method
 
 A simplistic but generally reliable method for finding basic SQL injections.
