@@ -17,6 +17,8 @@ SQUEAL <span style="color:#FFBF00">&#xAF;&#x5C;&#x5F;&#x28;&#x30C4;&#x29;&#x5F;&
 
 SQUIRREL &#x1F43F;&#xFE0F;
 
+SQUIRTLE &#x1F4A6;&#x1F422;
+
 ## Break & Repair Method
 
 A simplistic but generally reliable method for finding basic SQL injections.
