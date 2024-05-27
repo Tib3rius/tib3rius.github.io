@@ -19,6 +19,14 @@ SQUIRREL &#x1F43F;&#xFE0F;
 
 SQUIRTLE &#x1F4A6;&#x1F422;
 
+## Avoiding OR &lt;true&gt; (OR 1=1)
+
+With the exception of CTFs, injections involving an OR &lt;true&gt; expression (e.g. ' OR 1=1 -- -) should be avoided unless absolutely necessary.
+
+I wrote about the reasons why in <a href="https://tcm-sec.com/avoid-or-1-equals-1-in-sql-injections/">this article</a> and spoke about them at length in <a href="https://www.youtube.com/watch?v=8iSGWP7lk-M">this video</a>.
+
+If you have a "valid value", there is practically no need for an OR &lt;true&gt; when doing SQL injections. A valid value is one which returns a "positive" result in the application, for example a search term that returns 1 or more results, an ID that maps to an actual resource (e.g. user, product, etc.), or a valid username.
+
 ## Break & Repair Method
 
 A simplistic but generally reliable method for finding basic SQL injections.
