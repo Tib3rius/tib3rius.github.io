@@ -31,7 +31,7 @@ If you have a "valid value", there is practically no need for an OR &lt;true&gt;
 
 A simplistic but generally reliable method for finding basic SQL injections.
 
-First, "break" the statement by injecting a single or double quote into an otherwise valid value (e.g. username=admin&#x27;).
+First, "break" the statement by injecting a single or double quote into an otherwise valid value (e.g. `username=admin'`).
 
 Then, replace the injected quote with each of the following "repairs" in turn, to see if one results in the original (uninjected) response:
 
@@ -80,6 +80,20 @@ In some cases, none of our "repairs" work because we are injecting into an integ
 </tr>
 </tbody>
 </table>
+
+For example, suppose that some search functionality exists where the search term `shirt` returns 23 results. Thus the valid value is `shirt` and the associated valid response is the page containing 23 results.
+
+Appending a single quote to the search term `shirt'` breaks the SQL statement and now 0 results are returned. Note that this may also be because the search term `shirt'` is now invalid, but the "repair" process should determine this.
+
+Replace the single quote with one of the "repairs", for example `shirt' '`. This new search term once again returns 23 results. Since this matches the original valid response, it is highly likely that the search functionality suffers from SQL injection.
+
+This could be confirmed by attempting a UNION injection attack, or by injecting two boolean payloads:
+
+`shirt' AND '1'='1`
+
+`shirt' AND '1'='0`
+
+The first should return the original valid response (23 results), while the second should return 0 results.
 
 ## Identifying Variants
 
