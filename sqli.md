@@ -1072,3 +1072,7 @@ These statements execute local OS commands. The PostgreSQL, MSSQL, and 2nd Oracl
 </tr>
 </tbody>
 </table>
+
+## References
+
+The vast majority of the information comprised here came from my own research / experimentation with various injections and database variants. However several payloads were either taken from, or based on those found in the popular SQL injection tool <a href="https://sqlmap.org/">SQLmap</a>.
