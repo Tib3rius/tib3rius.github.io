@@ -241,44 +241,60 @@ These functions / operators can be used to concatenate two or more strings toget
 
 ## Substring
 
-These functions can be used to select a substring of a string. The START value should be set to 1 (not 0) to start the substring from the first character.
+These functions can be used to select a substring of a string. The START value should be set to 1 (not 0) to start the substring from the first character. Commaless versions are also included for bypassing certain WAFs / filtering.
 
 <table>
 <thead>
 <tr>
 <th>Variant</th>
 <th>Function</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td rowspan="2" class="span">MySQL</td>
-<td>SUBSTRING(&#x27;foobar&#x27;, START, LENGTH)</td>
+<td rowspan="4" class="span">MySQL</td>
+<td>SUBSTRING(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
+<td rowspan="3"></td>
 </tr>
 <tr>
-<td>SUBSTR(&#x27;foobar&#x27;, START, LENGTH)</td>
+<td>SUBSTR(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
 </tr>
 <tr>
-<td rowspan="2" class="span">PostgreSQL</td>
-<td>SUBSTRING(&#x27;foobar&#x27;, START, LENGTH)</td>
+<td>MID(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
 </tr>
 <tr>
-<td>SUBSTR(&#x27;foobar&#x27;, START, LENGTH)</td>
+<td>SUBSTRING(&#x27;foobar&#x27; FROM &lt;START&gt; FOR &lt;LENGTH&gt;)</td>
+<td>SUBSTR and MID can also be used.</td>
+</tr>
+<tr>
+<td rowspan="3" class="span">PostgreSQL</td>
+<td>SUBSTRING(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
+<td rowspan="3"></td>
+</tr>
+<tr>
+<td>SUBSTR(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
+</tr>
+<tr>
+<td>SUBSTRING(&#x27;foobar&#x27; FROM &lt;START&gt; FOR &lt;LENGTH&gt;)</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>SUBSTRING(&#x27;foobar&#x27;, START, LENGTH)</td>
+<td>SUBSTRING(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
+<td></td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>SUBSTR(&#x27;foobar&#x27;, START, LENGTH)</td>
+<td>SUBSTR(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
+<td></td>
 </tr>
 <tr>
 <td rowspan="2" class="span">SQLite</td>
-<td>SUBSTRING(&#x27;foobar&#x27;, START, LENGTH)</td>
+<td>SUBSTRING(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
+<td rowspan="2"></td>
 </tr>
 <tr>
-<td>SUBSTR(&#x27;foobar&#x27;, START, LENGTH)</td>
+<td>SUBSTR(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -414,7 +430,7 @@ Useful for blind SQL injections to determine the range a character falls in. Not
 
 ## Limiting & Offsetting Queries
 
-Syntax for limiting the query results to a certain number of rows, as well as offsetting the starting row.
+Syntax for limiting the query results to a certain number of rows, as well as offsetting the starting row. Commaless versions are also included for bypassing certain WAFs / filtering.
 
 <table>
 <thead>
