@@ -265,12 +265,12 @@ These functions can be used to select a substring of a string. The START value s
 </tr>
 <tr>
 <td>SUBSTRING(&#x27;foobar&#x27; FROM &lt;START&gt; FOR &lt;LENGTH&gt;)</td>
-<td>SUBSTR and MID can also be used.</td>
+<td>SUBSTR and MID can also be used for this commaless version.</td>
 </tr>
 <tr>
 <td rowspan="3" class="span">PostgreSQL</td>
 <td>SUBSTRING(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
-<td rowspan="3"></td>
+<td rowspan="7"></td>
 </tr>
 <tr>
 <td>SUBSTR(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
@@ -281,17 +281,14 @@ These functions can be used to select a substring of a string. The START value s
 <tr>
 <td class="span">MSSQL</td>
 <td>SUBSTRING(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
-<td></td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
 <td>SUBSTR(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
-<td></td>
 </tr>
 <tr>
 <td rowspan="2" class="span">SQLite</td>
 <td>SUBSTRING(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
-<td rowspan="2"></td>
 </tr>
 <tr>
 <td>SUBSTR(&#x27;foobar&#x27;, &lt;START&gt;, &lt;LENGTH&gt;)</td>
