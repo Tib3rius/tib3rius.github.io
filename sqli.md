@@ -282,7 +282,7 @@ These functions can be used to select a substring of a string. The START value s
 <tr>
 <th>Variant</th>
 <th>Function</th>
-<th>Notes</th>
+<th width="350rem">Notes</th>
 </tr>
 </thead>
 <tbody>
@@ -1100,18 +1100,18 @@ These statements execute local OS commands. The PostgreSQL, MSSQL, and 2nd Oracl
 </tr>
 <tr>
 <td class="span">PostgreSQL</td>
-<td>COPY (SELECT &#x27;&#x27;) to program &#x27;&lt;command&gt;&#x27;</td>
+<td>COPY (SELECT &#x27;&#x27;) to program &#x27;&lt;COMMAND&gt;&#x27;</td>
 </tr>
 <tr>
 <td class="span">MSSQL</td>
-<td>EXEC xp_cmdshell &#x27;&lt;command&gt;&#x27;</td>
+<td>EXEC xp_cmdshell &#x27;&lt;COMMAND&gt;&#x27;</td>
 </tr>
 <tr>
 <td rowspan="2" class="span">Oracle</td>
-<td>select os_command.exec_clob(&#x27;&lt;command&gt;&#x27;) cmd from dual</td>
+<td>SELECT os_command.exec_clob(&#x27;&lt;COMMAND&gt;&#x27;) cmd from dual</td>
 </tr>
 <tr>
-<td>DBMS_SCHEDULER.CREATE_JOB (job_name => &#x27;exec&#x27;, job_type => &#x27;EXECUTABLE&#x27;, job_action => &#x27;&lt;command&gt;&#x27;, enabled => TRUE)</td>
+<td>DBMS_SCHEDULER.CREATE_JOB (job_name => &#x27;exec&#x27;, job_type => &#x27;EXECUTABLE&#x27;, job_action => &#x27;&lt;COMMAND&gt;&#x27;, enabled => TRUE)</td>
 </tr>
 <tr>
 <td class="span">SQLite</td>
