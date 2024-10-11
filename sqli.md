@@ -8,34 +8,32 @@ This is an SQL injection cheatsheet with tried and true payloads / techniques th
 
 ## Table of Contents
 
-<div class="toc"><button class="toggle">Show/Hide</button><div class="hidden">
-
-* <a href="#key">Key</a>
-* <a href="#pronunciation-guide">Pronunciation Guide</a>
-* <a href="#avoiding-or-true-or-11">Avoiding OR &lt;true&gt; (OR 1=1)</a>
-* <a href="#break--repair-method">Break &amp; Repair Method</a>
-* <a href="#identifying-variants">Identifying Variants</a>
-* <a href="#comments">Comments</a>
-* <a href="#string-concatenation">String Concatenation</a>
-* <a href="#substrings">Substrings</a>
-* <a href="#length">Length</a>
-* <a href="#group-concatenation">Group Concatenation</a>
-* <a href="#convert-characters-to-integers-for-comparisons">Convert Characters to Integers for Comparisons</a>
-* <a href="#limiting--offsetting-queries">Limiting &amp; Offsetting Queries</a>
-* <a href="database-version">Database Version</a>
-* <a href="current-database--schema">Current Database / Schema</a>
-* <a href="list-databases">List Databases</a>
-* <a href="list-tables">List Tables</a>
-* <a href="list-columns">List Columns</a>
-* <a href="boolean-error-inferential-exploitation">Boolean Error Inferential Exploitation</a>
-* <a href="error-based-exploitation">Error Based Exploitation</a>
-* <a href="time-based-exploitation">Time Based Exploitation</a>
-* <a href="stack-based-injection">Stack Based Exploitation</a>
-* <a href="reading-local-files">Reading Local Files</a>
-* <a href="writing-local-files">Writing Local Files</a>
-* <a href="executing-os-commands">Executing OS Commands</a>
-* <a href="references">References</a>
-</div></div>
+<div class="toc"><button class="toggle">Show/Hide</button><div class="hidden"><ul>
+<li><a href="#key">Key</a></li>
+<li><a href="#pronunciation-guide">Pronunciation Guide</a></li>
+<li><a href="#avoiding-or-true-or-11">Avoiding OR &lt;true&gt; (OR 1=1)</a></li>
+<li><a href="#break--repair-method">Break &amp; Repair Method</a></li>
+<li><a href="#identifying-variants">Identifying Variants</a></li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#string-concatenation">String Concatenation</a></li>
+<li><a href="#substrings">Substrings</a></li>
+<li><a href="#length">Length</a></li>
+<li><a href="#group-concatenation">Group Concatenation</a></li>
+<li><a href="#convert-characters-to-integers-for-comparisons">Convert Characters to Integers for Comparisons</a></li>
+<li><a href="#limiting--offsetting-queries">Limiting &amp; Offsetting Queries</a></li>
+<li><a href="database-version">Database Version</a></li>
+<li><a href="current-database--schema">Current Database / Schema</a></li>
+<li><a href="list-databases">List Databases</a></li>
+<li><a href="list-tables">List Tables</a></li>
+<li><a href="list-columns">List Columns</a></li>
+<li><a href="boolean-error-inferential-exploitation">Boolean Error Inferential Exploitation</a></li>
+<li><a href="error-based-exploitation">Error Based Exploitation</a></li>
+<li><a href="time-based-exploitation">Time Based Exploitation</a></li>
+<li><a href="stack-based-injection">Stack Based Exploitation</a></li>
+<li><a href="reading-local-files">Reading Local Files</a></li>
+<li><a href="writing-local-files">Writing Local Files</a></li>
+<li><a href="executing-os-commands">Executing OS Commands</a></li>
+<li><a href="references">References</a></li></ul></div></div>
 
 ## Key
 
