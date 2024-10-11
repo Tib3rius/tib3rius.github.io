@@ -1,9 +1,41 @@
 ---
 title: "SQL Injection Cheatsheet"
 ---
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 # SQL Injection Cheatsheet
 
 This is an SQL injection cheatsheet with tried and true payloads / techniques that cover the 5 most popular database variants and their derivatives (MySQL, PostgreSQL, MSSQL/SQL Server, Oracle, SQLite).
+
+## Table of Contents
+
+<div class="toc"><button class="toggle">Show/Hide</button><div class="hidden">
+
+* <a href="#key">Key</a>
+* <a href="#pronunciation-guide">Pronunciation Guide</a>
+* <a href="#avoiding-or-true-or-11">Avoiding OR &lt;true&gt; (OR 1=1)</a>
+* <a href="#break--repair-method">Break &amp; Repair Method</a>
+* <a href="#identifying-variants">Identifying Variants</a>
+* <a href="#comments">Comments</a>
+* <a href="#string-concatenation">String Concatenation</a>
+* <a href="#substrings">Substrings</a>
+* <a href="#length">Length</a>
+* <a href="#group-concatenation">Group Concatenation</a>
+* <a href="#convert-characters-to-integers-for-comparisons">Convert Characters to Integers for Comparisons</a>
+* <a href="#limiting--offsetting-queries">Limiting &amp; Offsetting Queries</a>
+* <a href="database-version">Database Version</a>
+* <a href="current-database--schema">Current Database / Schema</a>
+* <a href="list-databases">List Databases</a>
+* <a href="list-tables">List Tables</a>
+* <a href="list-columns">List Columns</a>
+* <a href="boolean-error-inferential-exploitation">Boolean Error Inferential Exploitation</a>
+* <a href="error-based-exploitation">Error Based Exploitation</a>
+* <a href="time-based-exploitation">Time Based Exploitation</a>
+* <a href="stack-based-injection">Stack Based Exploitation</a>
+* <a href="reading-local-files">Reading Local Files</a>
+* <a href="writing-local-files">Writing Local Files</a>
+* <a href="executing-os-commands">Executing OS Commands</a>
+* <a href="references">References</a>
+</div></div>
 
 ## Key
 
@@ -243,7 +275,7 @@ These functions / operators can be used to concatenate two or more strings toget
 </tbody>
 </table>
 
-## Substring
+## Substrings
 
 These functions can be used to select a substring of a string. The START value should be set to 1 (not 0) to start the substring from the first character. Commaless versions are also included for bypassing certain WAFs / filtering.
 
@@ -1093,3 +1125,5 @@ These statements execute local OS commands. The PostgreSQL, MSSQL, and 2nd Oracl
 ## References
 
 The vast majority of the information comprised here came from my own research / experimentation with various injections and database variants. However several payloads were either taken from, or based on those found in the popular SQL injection tool <a href="https://sqlmap.org/">SQLmap</a>.
+
+<script>$(".toggle").click(function() {$(this).parent().children("div").toggle("fast", function(){});});</script>
