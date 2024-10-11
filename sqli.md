@@ -21,19 +21,19 @@ This is an SQL injection cheatsheet with tried and true payloads / techniques th
 <li><a href="#group-concatenation">Group Concatenation</a></li>
 <li><a href="#convert-characters-to-integers-for-comparisons">Convert Characters to Integers for Comparisons</a></li>
 <li><a href="#limiting--offsetting-queries">Limiting &amp; Offsetting Queries</a></li>
-<li><a href="database-version">Database Version</a></li>
-<li><a href="current-database--schema">Current Database / Schema</a></li>
-<li><a href="list-databases">List Databases</a></li>
-<li><a href="list-tables">List Tables</a></li>
-<li><a href="list-columns">List Columns</a></li>
-<li><a href="boolean-error-inferential-exploitation">Boolean Error Inferential Exploitation</a></li>
-<li><a href="error-based-exploitation">Error Based Exploitation</a></li>
-<li><a href="time-based-exploitation">Time Based Exploitation</a></li>
-<li><a href="stack-based-injection">Stack Based Exploitation</a></li>
-<li><a href="reading-local-files">Reading Local Files</a></li>
-<li><a href="writing-local-files">Writing Local Files</a></li>
-<li><a href="executing-os-commands">Executing OS Commands</a></li>
-<li><a href="references">References</a></li></ul></div></div>
+<li><a href="#database-version">Database Version</a></li>
+<li><a href="#current-database--schema">Current Database / Schema</a></li>
+<li><a href="#list-databases">List Databases</a></li>
+<li><a href="#list-tables">List Tables</a></li>
+<li><a href="#list-columns">List Columns</a></li>
+<li><a href="#boolean-error-inferential-exploitation">Boolean Error Inferential Exploitation</a></li>
+<li><a href="#error-based-exploitation">Error Based Exploitation</a></li>
+<li><a href="#time-based-exploitation">Time Based Exploitation</a></li>
+<li><a href="#stack-based-injection">Stack Based Exploitation</a></li>
+<li><a href="#reading-local-files">Reading Local Files</a></li>
+<li><a href="#writing-local-files">Writing Local Files</a></li>
+<li><a href="#executing-os-commands">Executing OS Commands</a></li>
+<li><a href="#references">References</a></li></ul></div></div>
 
 ## Key
 
