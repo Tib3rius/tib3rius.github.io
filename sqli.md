@@ -12,6 +12,7 @@ This is an SQL injection cheatsheet with tried and true payloads / techniques th
 <li><a href="#key">Key</a></li>
 <li><a href="#pronunciation-guide">Pronunciation Guide</a></li>
 <li><a href="#avoiding-or-true-or-11">Avoiding OR &lt;true&gt; (OR 1=1)</a></li>
+<li><a href="#safe-or-based-payloads">"Safe" OR-Based Payloads</a></li>
 <li><a href="#break--repair-method">Break &amp; Repair Method</a></li>
 <li><a href="#identifying-variants">Identifying Variants</a></li>
 <li><a href="#comments">Comments</a></li>
