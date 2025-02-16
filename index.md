@@ -35,3 +35,5 @@ They are available on multiple platforms, but remember to check my [Twitter](htt
 # Tools
 
 [AutoRecon](https://github.com/Tib3rius/AutoRecon)
+
+<p style="color:#151515;font-size:1px;"><a style="color:#151515;text-shadow:none" href="https://start.me/p/kx5qL5/osint-darkweb-russia">CommanderGirl</a></p>
