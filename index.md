@@ -9,6 +9,10 @@ Practice your web application security interview skills with these challenging q
 
 A comprehensive cheatsheet for SQL injection covering different techniques and payloads: [SQL Injection Cheatsheet](https://tib3rius.com/sqli)
 
+# DOM Clobbering Cheatsheet
+
+A dynamically generating cheatsheet for DOM Clobbering covering different techniques and payloads: [DOM Clobbering Cheatsheet](https://tib3rius.com/dom)
+
 # Courses
 
 I have two Privilege Escalation courses, one for Linux, one for Windows, as well as a bundle deal that includes both.
