@@ -6,6 +6,8 @@ title: "SQL Injection Cheatsheet"
 
 This is an SQL injection cheatsheet with tried and true payloads / techniques that cover the 5 most popular database variants and their derivatives (MySQL, PostgreSQL, MSSQL/SQL Server, Oracle, SQLite).
 
+Note: This page is not intended to teach you about SQL injection itself, but rather assist you when attempting to manually exploit SQL injections. You should be familiar with the core concepts of SQL injection before using this cheatsheet. PortSwigger have a good tutorial on <a href="https://portswigger.net/web-security/sql-injection">SQL Injection</a>.
+
 ## Table of Contents
 
 <div class="toc"><button class="toggle">Show/Hide</button><div class="hidden"><ul>
