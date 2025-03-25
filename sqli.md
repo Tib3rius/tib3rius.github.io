@@ -212,6 +212,8 @@ Once a potential injection is found, the database variant (e.g. MySQL, PostgreSQ
 </tbody>
 </table>
 
+For a quick explanation as to why this works: we are using a simple process of elimination. For example, MySQL (and its derivatives like MariaDB) is the only database variant that I know of which will concatenate two strings separated by a single space. So if the first payload in the list works, we can be confident that the database is MySQL-like. If it does not, we move to the 2nd payload, which uses the fact that the DATALENGTH function only works in MSSQL, and we repeat until we find a payload which is valid.
+
 ## Comments
 
 This comment syntax can be used to add comments to SQL statements, useful for commenting out anything after an injection, as well as bypassing certain filters. Note that &#x2D;&#x2D; comments require a space after the &#x2D;&#x2D; to be valid, and /\*comment\*/ are in-line comments.
