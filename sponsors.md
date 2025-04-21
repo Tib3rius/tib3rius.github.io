@@ -24,13 +24,4 @@ With a strong community of security-minded followers and a reputation for cuttin
 If you're looking to connect with one of the most passionate and knowledgeable audiences in cybersecurity, let's talk. I only partner with brands I genuinely believe in - especially if you’re building tools or experiences that actually help the hacker community.
 
 **Contact**: <a href="#" id="email-link"></a>
-<script>
-const user = "sponsors";
-const domain = "tib3rius";
-const tld = "com";
-
-const full = `${user}@${domain}.${tld}`;
-const link = document.getElementById("email-link");
-link.textContent = full;
-link.href = `mailto:${full}`;
-</script>
+<script>const user = "sponsors";const domain = "tib3rius";const tld = "com";const full = `${user}@${domain}.${tld}`;const link = document.getElementById("email-link");link.textContent = full;link.href = `mailto:${full}`;</script>
