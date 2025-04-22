@@ -15,11 +15,13 @@ With a strong community of security-minded followers and a reputation for cuttin
 
 * [LinkedIn](https://www.linkedin.com/in/tib3rius/) - 54k followers.
 
+I also have small but growing audiences on [Bluesky](https://bsky.app/profile/tib3rius.bsky.social), [Instagram](https://www.instagram.com/0xtib3rius) and [TikTok](https://www.tiktok.com/@0xtib3rius).
+
 ## Sponsorship Opportunities
 
 * **60-Second Ad Reads**<br/>Integrated directly into YouTube videos - read in my own voice, with context and tone that fits naturally into my content. Perfect for products, services, or events targeting security professionals.
 
-* **Sponsored Posts**<br/>Promoted across Twitter/X and/or LinkedIn. These posts are written or reviewed by me to maintain authenticity and help ensure high engagement.
+* **Sponsored Posts**<br/>Promoted across one or more social media platforms. These posts are written or reviewed by me to maintain authenticity and help ensure high engagement.
 
 * **Creative Campaigns**<br/>Got something more unique in mind? I've collaborated on AI-generated songs, cybersecurity themed gameshows, and more. I love weird ideas, so pitch me yours!
 

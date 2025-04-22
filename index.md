@@ -1,6 +1,8 @@
 ---
 title: Home
 ---
+Looking for sponsorship opportunities? Check out my [sponsors](https://tib3rius.com/sponsors) page!
+
 # Web AppSec Interview Questions
 
 Practice your web application security interview skills with these challenging questions (answers provided but hidden by default): [Web AppSec Interview Questions](https://tib3rius.com/interview-questions)
