@@ -9,11 +9,11 @@ With a strong community of security-minded followers and a reputation for cuttin
 
 ## Audience Reach
 
-* [YouTube](https://www.youtube.com/@Tib3rius) - 20k subscribers. Weekly videos on web application security, cybersecurity news, and career advice.
+* [YouTube](https://www.youtube.com/@Tib3rius) - 21k subscribers. Weekly videos on web application security, cybersecurity news, and career advice.
 
-* [Twitter/X](https://x.com/0xTib3rius) - 65k followers.
+* [Twitter/X](https://x.com/0xTib3rius) - 66k followers.
 
-* [LinkedIn](https://www.linkedin.com/in/tib3rius/) - 54k followers.
+* [LinkedIn](https://www.linkedin.com/in/tib3rius/) - 57k followers.
 
 I also have small but growing audiences on [Bluesky](https://bsky.app/profile/tib3rius.bsky.social), [Instagram](https://www.instagram.com/0xtib3rius) and [TikTok](https://www.tiktok.com/@0xtib3rius).
 
