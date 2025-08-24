@@ -138,6 +138,8 @@ Then, replace the injected quote with each of the following "repairs" in turn, t
 </tbody>
 </table>
 
+Note that the last repair may cause other unexpected behavior as it ends the statement prematurely using a comment.
+
 In some cases, none of our "repairs" work because we are injecting into an integer value. In these cases, try the following repairs. Note that each one begins with a space:
 
 <table>
@@ -148,10 +150,10 @@ In some cases, none of our "repairs" work because we are injecting into an integ
 </thead>
 <tbody>
 <tr>
-<td>&nbsp;&#x2D;&#x2D; &#x2D;</td>
+<td>&nbsp;AND 1=1</td>
 </tr>
 <tr>
-<td>&nbsp;AND 1=1</td>
+<td>&nbsp;&#x2D;&#x2D; &#x2D;</td>
 </tr>
 <tr>
 <td>&nbsp;AND 1=1 &#x2D;&#x2D; &#x2D;</td>
@@ -159,7 +161,9 @@ In some cases, none of our "repairs" work because we are injecting into an integ
 </tbody>
 </table>
 
-For example, suppose that some search functionality exists where the search term `shirt` returns 23 results. Thus the valid value is `shirt` and the associated valid response is the page containing 23 results.
+Note that the last two repairs may cause other unexpected behavior as they end the statement prematurely using a comment.
+
+As an example of this technique, suppose that some search functionality exists where the search term `shirt` returns 23 results. Thus the valid value is `shirt` and the associated valid response is the page containing 23 results.
 
 Appending a single quote to the search term `shirt'` breaks the SQL statement and now 0 results are returned. Note that this may also be because the search term `shirt'` is now invalid, but the "repair" process should determine this.
 
