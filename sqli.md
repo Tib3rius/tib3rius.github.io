@@ -996,7 +996,7 @@ These injection payloads are "safe" and should only ever sleep (for 10 seconds) 
 
 ## Stack Based Injection
 
-Generally if stack based injection is supported, it is only detectable by causing a time based delay. These injection payloads should cause a delay of 10 seconds:
+Generally if stack based injection is supported (fun fact: you cannot disable stacked queries in PostgreSQL - ty Erubius), it is only detectable by causing a time based delay. These injection payloads should cause a delay of 10 seconds:
 
 <table>
 <thead>
