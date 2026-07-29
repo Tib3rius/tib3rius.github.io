@@ -10,7 +10,7 @@ title: Stickers
 .sticker{text-align:center;}
 .sticker a{border:0;}
 .sticker img{display:block;width:100%;height:260px;object-fit:contain;margin:0 auto;}
-.sticker strong{display:block;margin-top:0.75em;}
+.sticker strong{display:block;margin-top:0.75em;color:#b5e853;}
 .sticker p{margin:0.35em 0 0;font-size:0.9em;}
 @media (max-width:640px){
   .overview{flex-direction:column;align-items:center;text-align:center;}
@@ -27,7 +27,7 @@ title: Stickers
 
 <div class="overview">
 <img src="/stickers/images/thumbs/qr-code.png" alt="Sticker QR Code">
-<p>This page contains a collection of every sticker I have ever created, along with a short description. Clicking on a sticker will load it in full resolution (the images on this page are lower resolution thumbnails).<br /><br />You may, if you wish, print out these stickers for your own personal use, or to give freely to others. You may not sell or otherwise profit from any of these stickers.<br /><br />Please also check out my <a href="https://hackerstickers.org">Hacker Stickers</a> project.</p>
+<p>This page contains a collection of every sticker I have ever created (or that were created for me), along with a short description. Clicking on a sticker will load it in full resolution (the images on this page are lower resolution thumbnails).<br /><br />You may, if you wish, print out these stickers for your own personal use, or to give freely to others. You may not sell or otherwise profit from any of these stickers.<br /><br />Please also check out my <a href="https://hackerstickers.org">Hacker Stickers</a> project.</p>
 </div>
 
 ## The Stickers
@@ -36,13 +36,13 @@ title: Stickers
 
 <div class="sticker">
 <a href="/stickers/images/full-size/aaaaaaaaa-segmentation-fault-im-in.png"><img src="/stickers/images/thumbs/aaaaaaaaa-segmentation-fault-im-in.png" alt="AAAAAAAAA...segmentation fault. I'm in"></a>
-<strong>AAAAAAAAA...segmentation fault. I'm in</strong>
+<strong>AAAAAAAA...segmentation fault. I'm in</strong>
 <p>Spamming A's for shells. Classic hacking.</p>
 </div>
 
 <div class="sticker">
 <a href="/stickers/images/full-size/across-the-pondcast.png"><img src="/stickers/images/thumbs/across-the-pondcast.png" alt="Across the Pondcast"></a>
-<strong>Across the Pondcast</strong>
+<strong>Across the Pondcast Logo</strong>
 <p>The logo of my <a href="https://acrossthepondcast.net">podcast</a>. This sticker was drawn by <a href="https://www.youtube.com/@whimmery">Whimmery</a>.</p>
 </div>
 
@@ -168,13 +168,13 @@ title: Stickers
 
 <div class="sticker">
 <a href="/stickers/images/full-size/my-job-its-just-breach.png"><img src="/stickers/images/thumbs/my-job-its-just-breach.png" alt="My Job It's Just Breach"></a>
-<strong>My Job It's Just Breach</strong>
+<strong>My Job...It's Just Breach</strong>
 <p>I'm Kenough.</p>
 </div>
 
 <div class="sticker">
 <a href="/stickers/images/full-size/never-or-1-equals-1.png"><img src="/stickers/images/thumbs/never-or-1-equals-1.png" alt="NEVER &#x2018; OR 1=1"></a>
-<strong>NEVER &#x2018; OR 1&#x3D;1</strong>
+<strong>NEVER &#x27; OR 1&#x3D;1</strong>
 <p>A reminder that OR 1=1 is a terrible example of an SQL injection payload.</p>
 </div>
 
@@ -191,6 +191,12 @@ title: Stickers
 </div>
 
 <div class="sticker">
+<a href="/stickers/images/full-size/qr-code.png"><img src="/stickers/images/thumbs/qr-code.png" alt="QR Code"></a>
+<strong>QR Code</strong>
+<p>Initially <a href="https://x.com/0xTib3rius/status/2072822419266638261">a joke I made on X</a> mocking the PlayStation announcement concerning the discontinuation of physical discs, I decided to not only make this sticker real, but have it point to the page you are currently reading.</p>
+</div>
+
+<div class="sticker">
 <a href="/stickers/images/full-size/talk-dirty-to-me.png"><img src="/stickers/images/thumbs/talk-dirty-to-me.png" alt="Talk dirty to me"></a>
 <strong>Talk dirty to me</strong>
 <p>One for all the people who support calling it Cybersecurity and not InfoSec.</p>
@@ -198,37 +204,37 @@ title: Stickers
 
 <div class="sticker">
 <a href="/stickers/images/full-size/tib3rius.png"><img src="/stickers/images/thumbs/tib3rius.png" alt="Tib3rius"></a>
-<strong>Tib3rius</strong>
+<strong>Tib3rius PFP</strong>
 <p>The profile picture I used for many years. Originally taken from a public domain photo of a statue of Emperor Tiberius, I added geek glasses and tweaked the mouth to a slight smile.</p>
 </div>
 
 <div class="sticker">
 <a href="/stickers/images/full-size/tib3rius-0day.png"><img src="/stickers/images/thumbs/tib3rius-0day.png" alt="Tib3rius 0day"></a>
-<strong>Tib3rius 0day</strong>
+<strong>Tib3rius 0day PFP</strong>
 <p>A version of my profile picture created for me by 0day (Ryan).</p>
 </div>
 
 <div class="sticker">
 <a href="/stickers/images/full-size/tib3rius-cartoon.png"><img src="/stickers/images/thumbs/tib3rius-cartoon.png" alt="Tib3rius Cartoon"></a>
-<strong>Tib3rius Cartoon</strong>
+<strong>Tib3rius Cartoon PFP</strong>
 <p>A version of my profile picture created for me by InfoSec Artist.</p>
 </div>
 
 <div class="sticker">
 <a href="/stickers/images/full-size/tibuwu-chan.jpg"><img src="/stickers/images/thumbs/tibuwu-chan.jpg" alt="TibUwU-chan"></a>
-<strong>TibUwU-chan</strong>
+<strong>TibUwU-chan PFP</strong>
 <p>A version of my profile picture created for me by Trash Puppy.</p>
 </div>
 
 <div class="sticker">
 <a href="/stickers/images/full-size/toc-tou-spit-on-that-thang.png"><img src="/stickers/images/thumbs/toc-tou-spit-on-that-thang.png" alt="TOC TOU Spit On That Thang"></a>
-<strong>TOC TOU Spit On That Thang</strong>
+<strong>TOC TOU &amp; Spit On That Thang</strong>
 <p>Oh god what have I done.</p>
 </div>
 
 <div class="sticker">
 <a href="/stickers/images/full-size/um-acktually.png"><img src="/stickers/images/thumbs/um-acktually.png" alt="Um ACKtually"></a>
-<strong>Um ACKtually</strong>
+<strong>Um, ACKtually...</strong>
 <p>The logo for one of my contests at DEF CON.</p>
 </div>
 
