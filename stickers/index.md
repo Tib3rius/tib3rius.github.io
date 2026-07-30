@@ -30,8 +30,6 @@ title: Stickers
 <p>This page contains a collection of every sticker I have ever created (or that were created for me), along with a short description. Clicking on a sticker will load it in full resolution (the images on this page are lower resolution thumbnails).<br /><br />You may, if you wish, print out these stickers for your own personal use, or to give freely to others. You may not sell or otherwise profit from any of these stickers.<br /><br />Please also check out my <a href="https://hackerstickers.org">Hacker Stickers</a> project.</p>
 </div>
 
-## The Stickers
-
 <div class="stickers">
 
 <div class="sticker">
